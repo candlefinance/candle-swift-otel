@@ -36,7 +36,7 @@ let package = Package(
 
         // MARK: - OTLPGRPC
 
-        .package(url: "https://github.com/grpc/grpc-swift-2.git", from: "2.0.0"),
+        .package(url: "https://github.com/candlefinance/grpc-swift-2.git", from: "2.0.0-candle"),
         .package(url: "https://github.com/candlefinance/grpc-swift-nio-transport.git", exact: "2.0.0-candle"),
         .package(url: "https://github.com/grpc/grpc-swift-protobuf.git", from: "2.0.0"),
 

@@ -11,7 +11,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-#if !(OTLPHTTP || OTLPGRPC)
+#if !(OTLPHTTP)
 // Empty when above trait(s) are disabled.
 #else
 

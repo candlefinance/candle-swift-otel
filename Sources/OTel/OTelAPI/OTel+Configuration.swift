@@ -912,11 +912,7 @@ extension OTel.Configuration.OTLPExporterConfiguration {
         }
 
         var backing: Backing
-
-        /// gRPC transport protocol for OTLP.
-        #if !OTLPGRPC
         @available(*, unavailable, message: "Using the OTLP/gRPC exporter requires the `OTLPGRPC` trait enabled.")
-        #endif
 
         /// HTTP transport with Protocol Buffers encoding for OTLP.
         #if !OTLPHTTP

@@ -15,8 +15,7 @@ let package = Package(
     ],
     traits: [
         .trait(name: "OTLPHTTP"),
-        .trait(name: "OTLPGRPC"),
-        .default(enabledTraits: ["OTLPHTTP", "OTLPGRPC"]),
+        .default(enabledTraits: ["OTLPHTTP"]),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-distributed-tracing.git", from: "1.2.0"),
@@ -33,12 +32,6 @@ let package = Package(
         // MARK: - OTLPCore
 
         .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.30.0"),
-
-        // MARK: - OTLPGRPC
-
-        .package(url: "https://github.com/grpc/grpc-swift-2.git", from: "2.0.0"),
-        .package(url: "https://github.com/grpc/grpc-swift-nio-transport.git", from: "2.0.0"),
-        .package(url: "https://github.com/grpc/grpc-swift-protobuf.git", from: "2.0.0"),
 
         // MARK: - OTLPHTTP
 
@@ -70,14 +63,9 @@ let package = Package(
                 // Depend on this if either trait is enabled.
                 // .product(name: "SwiftProtobuf", package: "swift-protobuf", condition: .when(traits: ["OTLPHTTP", "OTLPGRPC"])),
                 .product(name: "SwiftProtobuf", package: "swift-protobuf", condition: .when(traits: ["OTLPHTTP"])),
-                .product(name: "SwiftProtobuf", package: "swift-protobuf", condition: .when(traits: ["OTLPGRPC"])),
                 // OTLP/HTTP exporter -- only when OTLPHTTP trait is enabled.
                 .product(name: "AsyncHTTPClient", package: "async-http-client", condition: .when(traits: ["OTLPHTTP"])),
                 .product(name: "NIOSSL", package: "swift-nio-ssl", condition: .when(traits: ["OTLPHTTP"])),
-                // OTLP/GRPC exporter -- only when OTLPGRPC trait is enabled.
-                .product(name: "GRPCProtobuf", package: "grpc-swift-protobuf", condition: .when(traits: ["OTLPGRPC"])),
-                .product(name: "GRPCCore", package: "grpc-swift-2", condition: .when(traits: ["OTLPGRPC"])),
-                .product(name: "GRPCNIOTransportHTTP2", package: "grpc-swift-nio-transport", condition: .when(traits: ["OTLPGRPC"])),
             ],
             swiftSettings: sharedSwiftSettings
         ),

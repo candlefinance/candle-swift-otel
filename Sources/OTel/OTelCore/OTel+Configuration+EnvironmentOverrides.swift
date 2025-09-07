@@ -91,7 +91,6 @@ extension OTel.Configuration.OTLPExporterConfiguration {
         }
         switch (self.protocol.backing, environment[key.shared], environment[signalSpecificKey]) {
         case (_, .none, .none): endpointHasBeenExplicitlySet = previousValue.endpointHasBeenExplicitlySet
-        case (.grpc, .some, _), (.grpc, _, .some): endpointHasBeenExplicitlySet = true
         case (_, .some, .none): endpointHasBeenExplicitlySet = false
         case (_, _, .some): endpointHasBeenExplicitlySet = true
         }

@@ -81,8 +81,6 @@ final class OTLPHTTPExporter<Request: Message, Response: Message>: Sendable {
             let body: ByteBufferWrapper = try proto.jsonUTF8Bytes(options: encodingOptions)
             request.body = .bytes(body.backing)
             request.headers.replaceOrAdd(name: "Content-Type", value: "application/json")
-        case .grpc:
-            preconditionFailure("unreachable")
         }
 
         // https://opentelemetry.io/docs/specs/otel/protocol/exporter/#user-agent

@@ -907,7 +907,6 @@ extension OTel.Configuration.OTLPExporterConfiguration {
     // swiftformat:disable:next redundantBackticks
     public struct `Protocol`: Equatable, Sendable {
         enum Backing: String, CaseIterable {
-            case grpc
             case httpProtobuf = "http/protobuf"
             case httpJSON = "http/json"
         }
@@ -918,8 +917,6 @@ extension OTel.Configuration.OTLPExporterConfiguration {
         #if !OTLPGRPC
         @available(*, unavailable, message: "Using the OTLP/gRPC exporter requires the `OTLPGRPC` trait enabled.")
         #endif
-        @available(gRPCSwift, *)
-        public static let grpc: Self = .init(backing: .grpc)
 
         /// HTTP transport with Protocol Buffers encoding for OTLP.
         #if !OTLPHTTP

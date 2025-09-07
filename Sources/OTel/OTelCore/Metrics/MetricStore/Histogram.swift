@@ -44,14 +44,12 @@ final class Histogram<Value: Bucketable>: Sendable {
     let description: String?
     let attributes: Set<Attribute>
 
-    @usableFromInline
     struct State: Sendable {
-        @usableFromInline var buckets: [(bound: Value, count: Int)]
-        @usableFromInline var countAboveUpperBound: Int
-        @usableFromInline var sum: Value
-        @usableFromInline var count: Int
+        var buckets: [(bound: Value, count: Int)]
+        var countAboveUpperBound: Int
+        var sum: Value
+        var count: Int
 
-        @inlinable
         init(buckets: [Value]) {
             countAboveUpperBound = 0
             sum = .zero
@@ -60,7 +58,7 @@ final class Histogram<Value: Bucketable>: Sendable {
         }
     }
 
-    @usableFromInline let box: NIOLockedValueBox<State>
+    let box: NIOLockedValueBox<State>
 
     init(name: String, unit: String? = nil, description: String? = nil, attributes: Set<Attribute> = [], buckets: [Value]) {
         self.name = name

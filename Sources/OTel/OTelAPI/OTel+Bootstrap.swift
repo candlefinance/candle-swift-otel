@@ -155,7 +155,6 @@ extension OTel {
         case (.none, _): "none"
         case (.otlp, .httpProtobuf): "OTLP/HTTP+Protobuf"
         case (.otlp, .httpJSON): "OTLP/HTTP+json"
-        case (.otlp, .grpc): "OTLP/gRPC"
         }
         if resolvedConfiguration.logs.exporter.backing != .console {
             logger.info(

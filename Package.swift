@@ -75,9 +75,6 @@ let package = Package(
                 .product(name: "AsyncHTTPClient", package: "async-http-client", condition: .when(traits: ["OTLPHTTP"])),
                 .product(name: "NIOSSL", package: "swift-nio-ssl", condition: .when(traits: ["OTLPHTTP"])),
                 // OTLP/GRPC exporter -- only when OTLPGRPC trait is enabled.
-                .product(name: "GRPCProtobuf", package: "grpc-swift-protobuf", condition: .when(traits: ["OTLPGRPC"])),
-                .product(name: "GRPCCore", package: "grpc-swift-2", condition: .when(traits: ["OTLPGRPC"])),
-                .product(name: "GRPCNIOTransportHTTP2", package: "grpc-swift-nio-transport", condition: .when(traits: ["OTLPGRPC"])),
             ],
             swiftSettings: sharedSwiftSettings
         ),

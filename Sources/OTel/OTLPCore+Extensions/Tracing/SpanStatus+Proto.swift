@@ -27,6 +27,8 @@ extension Opentelemetry_Proto_Trace_V1_Status {
                 $0.code = .ok
             case .error:
                 $0.code = .error
+            @unknown default:
+                $0.code = .error
             }
             $0.message = status.message ?? ""
         }

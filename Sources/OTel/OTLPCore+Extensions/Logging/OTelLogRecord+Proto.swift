@@ -54,6 +54,7 @@ extension Opentelemetry_Proto_Logs_V1_SeverityNumber {
         case .warning: self = .warn
         case .error: self = .error
         case .critical: self = .error2
+        @unknown default: fatalError("Unhandled case")
         }
     }
 }
@@ -93,6 +94,8 @@ extension Opentelemetry_Proto_Common_V1_AnyValue {
             arrayValue = .with {
                 $0.values = array.map { metadataValue in Opentelemetry_Proto_Common_V1_AnyValue(metadataValue) }
             }
+        @unknown default:
+            fatalError("Unhandled case")
         }
     }
 }

@@ -51,9 +51,6 @@ import W3CTraceContext
 /// (b) Allow us to remove the existential completely for the OTLP/HTTP exporter.
 
 internal enum WrappedLogRecordExporter: OTelLogRecordExporter {
-    #if OTLPGRPC
-    case grpc(any OTelLogRecordExporter)
-    #endif
     #if OTLPHTTP
     case http(OTLPHTTPLogRecordExporter)
     #endif
@@ -62,9 +59,6 @@ internal enum WrappedLogRecordExporter: OTelLogRecordExporter {
 
     func run() async throws {
         switch self {
-        #if OTLPGRPC
-        case .grpc(let exporter): try await exporter.run()
-        #endif
         #if OTLPHTTP
         case .http(let exporter): try await exporter.run()
         #endif
@@ -75,9 +69,6 @@ internal enum WrappedLogRecordExporter: OTelLogRecordExporter {
 
     func export(_ batch: some Collection<OTelLogRecord> & Sendable) async throws {
         switch self {
-        #if OTLPGRPC
-        case .grpc(let exporter): try await exporter.export(batch)
-        #endif
         #if OTLPHTTP
         case .http(let exporter): try await exporter.export(batch)
         #endif
@@ -88,9 +79,6 @@ internal enum WrappedLogRecordExporter: OTelLogRecordExporter {
 
     func forceFlush() async throws {
         switch self {
-        #if OTLPGRPC
-        case .grpc(let exporter): try await exporter.forceFlush()
-        #endif
         #if OTLPHTTP
         case .http(let exporter): try await exporter.forceFlush()
         #endif
@@ -101,9 +89,6 @@ internal enum WrappedLogRecordExporter: OTelLogRecordExporter {
 
     func shutdown() async {
         switch self {
-        #if OTLPGRPC
-        case .grpc(let exporter): await exporter.shutdown()
-        #endif
         #if OTLPHTTP
         case .http(let exporter): await exporter.shutdown()
         #endif
@@ -117,16 +102,7 @@ internal enum WrappedLogRecordExporter: OTelLogRecordExporter {
         case .otlp:
             switch configuration.logs.otlpExporter.protocol.backing {
             case .grpc:
-                #if OTLPGRPC
-                if #available(gRPCSwift, *) {
-                    let exporter = try OTLPGRPCLogRecordExporter(configuration: configuration.logs.otlpExporter, logger: logger)
-                    self = .grpc(exporter)
-                } else {
-                    fatalError("Using the OTLP/gRPC exporter is not supported on this platform.")
-                }
-                #else // OTLPGRPC
                 fatalError("Using the OTLP/gRPC exporter requires the `OTLPGRPC` trait enabled.")
-                #endif
             case .httpProtobuf, .httpJSON:
                 #if OTLPHTTP
                 let exporter = try OTLPHTTPLogRecordExporter(configuration: configuration.logs.otlpExporter, logger: logger)
@@ -142,9 +118,6 @@ internal enum WrappedLogRecordExporter: OTelLogRecordExporter {
 }
 
 internal enum WrappedMetricExporter: OTelMetricExporter {
-    #if OTLPGRPC
-    case grpc(any OTelMetricExporter)
-    #endif
     #if OTLPHTTP
     case http(OTLPHTTPMetricExporter)
     #endif
@@ -152,9 +125,6 @@ internal enum WrappedMetricExporter: OTelMetricExporter {
 
     func run() async throws {
         switch self {
-        #if OTLPGRPC
-        case .grpc(let exporter): try await exporter.run()
-        #endif
         #if OTLPHTTP
         case .http(let exporter): try await exporter.run()
         #endif
@@ -164,9 +134,6 @@ internal enum WrappedMetricExporter: OTelMetricExporter {
 
     func export(_ batch: some Collection<OTelResourceMetrics> & Sendable) async throws {
         switch self {
-        #if OTLPGRPC
-        case .grpc(let exporter): try await exporter.export(batch)
-        #endif
         #if OTLPHTTP
         case .http(let exporter): try await exporter.export(batch)
         #endif
@@ -176,9 +143,6 @@ internal enum WrappedMetricExporter: OTelMetricExporter {
 
     func forceFlush() async throws {
         switch self {
-        #if OTLPGRPC
-        case .grpc(let exporter): try await exporter.forceFlush()
-        #endif
         #if OTLPHTTP
         case .http(let exporter): try await exporter.forceFlush()
         #endif
@@ -188,9 +152,6 @@ internal enum WrappedMetricExporter: OTelMetricExporter {
 
     func shutdown() async {
         switch self {
-        #if OTLPGRPC
-        case .grpc(let exporter): await exporter.shutdown()
-        #endif
         #if OTLPHTTP
         case .http(let exporter): await exporter.shutdown()
         #endif
@@ -203,16 +164,7 @@ internal enum WrappedMetricExporter: OTelMetricExporter {
         case .otlp:
             switch configuration.metrics.otlpExporter.protocol.backing {
             case .grpc:
-                #if OTLPGRPC
-                if #available(gRPCSwift, *) {
-                    let exporter = try OTLPGRPCMetricExporter(configuration: configuration.metrics.otlpExporter, logger: logger)
-                    self = .grpc(exporter)
-                } else {
-                    fatalError("Using the OTLP/gRPC exporter is not supported on this platform.")
-                }
-                #else // OTLPGRPC
                 fatalError("Using the OTLP/gRPC exporter requires the `OTLPGRPC` trait enabled.")
-                #endif
             case .httpProtobuf, .httpJSON:
                 #if OTLPHTTP
                 let exporter = try OTLPHTTPMetricExporter(configuration: configuration.metrics.otlpExporter, logger: logger)
@@ -229,9 +181,6 @@ internal enum WrappedMetricExporter: OTelMetricExporter {
 }
 
 internal enum WrappedSpanExporter: OTelSpanExporter {
-    #if OTLPGRPC
-    case grpc(any OTelSpanExporter)
-    #endif
     #if OTLPHTTP
     case http(OTLPHTTPSpanExporter)
     #endif
@@ -239,9 +188,6 @@ internal enum WrappedSpanExporter: OTelSpanExporter {
 
     func run() async throws {
         switch self {
-        #if OTLPGRPC
-        case .grpc(let exporter): try await exporter.run()
-        #endif
         #if OTLPHTTP
         case .http(let exporter): try await exporter.run()
         #endif
@@ -251,9 +197,6 @@ internal enum WrappedSpanExporter: OTelSpanExporter {
 
     func export(_ batch: some Collection<OTelFinishedSpan> & Sendable) async throws {
         switch self {
-        #if OTLPGRPC
-        case .grpc(let exporter): try await exporter.export(batch)
-        #endif
         #if OTLPHTTP
         case .http(let exporter): try await exporter.export(batch)
         #endif
@@ -263,9 +206,6 @@ internal enum WrappedSpanExporter: OTelSpanExporter {
 
     func forceFlush() async throws {
         switch self {
-        #if OTLPGRPC
-        case .grpc(let exporter): try await exporter.forceFlush()
-        #endif
         #if OTLPHTTP
         case .http(let exporter): try await exporter.forceFlush()
         #endif
@@ -275,9 +215,6 @@ internal enum WrappedSpanExporter: OTelSpanExporter {
 
     func shutdown() async {
         switch self {
-        #if OTLPGRPC
-        case .grpc(let exporter): await exporter.shutdown()
-        #endif
         #if OTLPHTTP
         case .http(let exporter): await exporter.shutdown()
         #endif
@@ -290,16 +227,7 @@ internal enum WrappedSpanExporter: OTelSpanExporter {
         case .otlp:
             switch configuration.traces.otlpExporter.protocol.backing {
             case .grpc:
-                #if OTLPGRPC
-                if #available(gRPCSwift, *) {
-                    let exporter = try OTLPGRPCSpanExporter(configuration: configuration.traces.otlpExporter, logger: logger)
-                    self = .grpc(exporter)
-                } else {
-                    fatalError("Using the OTLP/gRPC exporter is not supported on this platform.")
-                }
-                #else // OTLPGRPC
                 fatalError("Using the OTLP/gRPC exporter requires the `OTLPGRPC` trait enabled.")
-                #endif
             case .httpProtobuf, .httpJSON:
                 #if OTLPHTTP
                 let exporter = try OTLPHTTPSpanExporter(configuration: configuration.traces.otlpExporter, logger: logger)
@@ -394,14 +322,6 @@ internal enum WrappedLogRecordProcessor: OTelLogRecordProcessor {
         /// > output exporter SHOULD be paired with a simple processor.
         /// > — source: https://opentelemetry.io/docs/specs/otel/logs/sdk_exporters/stdout/
         switch exporter {
-        #if OTLPGRPC
-        case .grpc:
-            self = .batch(OTelBatchLogRecordProcessor(
-                exporter: exporter,
-                configuration: configuration.logs.batchLogRecordProcessor,
-                logger: logger
-            ))
-        #endif
         #if OTLPHTTP
         case .http:
             self = .batch(OTelBatchLogRecordProcessor(

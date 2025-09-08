@@ -32,6 +32,8 @@ extension Opentelemetry_Proto_Trace_V1_Span.SpanKind {
             self = .consumer
         case .internal:
             self = .internal
+        @unknown default:
+            fatalError("Unhandled case")
         }
     }
 }

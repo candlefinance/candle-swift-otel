@@ -282,6 +282,8 @@ final class OTelRecordingSpan: Span, Sendable {
                 return SpanStatus(code: .ok, message: nil)
             case .error:
                 return status
+            @unknown default:
+                return status
             }
         }()
 

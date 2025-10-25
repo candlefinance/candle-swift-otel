@@ -11,26 +11,26 @@
 //
 //===----------------------------------------------------------------------===//
 
-import W3CTraceContext
+public import W3CTraceContext
 
 /// Represents the portion of an ``OTelSpan`` which must be serialized and propagated across asynchronous boundaries.
 ///
 /// [OTel Spec: SpanContext](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/api.md#spancontext)
-struct OTelSpanContext: Hashable, Sendable {
+public struct OTelSpanContext: Hashable, Sendable {
     private var traceContext: TraceContext
 
     /// The ID of the trace the span belongs to.
-    var traceID: TraceID {
+    public var traceID: TraceID {
         traceContext.traceID
     }
 
     /// The unique ID of this span.
-    var spanID: SpanID {
+    public var spanID: SpanID {
         traceContext.spanID
     }
 
     /// An 8-bit field controlling tracing flags such as sampling.
-    var traceFlags: TraceFlags {
+    public var traceFlags: TraceFlags {
         traceContext.flags
     }
 
@@ -50,11 +50,11 @@ struct OTelSpanContext: Hashable, Sendable {
     /// Whether this span context describes a span that originated on a different service.
     let isRemote: Bool
 
-    var traceParentHeaderValue: String {
+    public var traceParentHeaderValue: String {
         traceContext.traceParentHeaderValue
     }
 
-    var traceStateHeaderValue: String? {
+    public var traceStateHeaderValue: String? {
         traceContext.traceStateHeaderValue
     }
 

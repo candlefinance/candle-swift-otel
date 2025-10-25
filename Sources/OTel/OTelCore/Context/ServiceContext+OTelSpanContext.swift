@@ -11,10 +11,10 @@
 //
 //===----------------------------------------------------------------------===//
 
-import ServiceContextModule
+public import ServiceContextModule
 import W3CTraceContext
 
-extension ServiceContext {
+public extension ServiceContext {
     /// The span context.
     var spanContext: OTelSpanContext? {
         get {

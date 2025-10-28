@@ -37,8 +37,8 @@ package import CandleSwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
-  struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
+fileprivate struct _GeneratedWithProtocGenSwiftVersion: CandleSwiftProtobuf.ProtobufAPIVersionCheck {
+  struct _2: CandleSwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
@@ -46,7 +46,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 /// primitive value such as a string or integer or it may contain an arbitrary nested
 /// object containing arrays, key-value lists and primitives.
 package struct Opentelemetry_Proto_Common_V1_AnyValue: @unchecked Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
@@ -110,7 +110,7 @@ package struct Opentelemetry_Proto_Common_V1_AnyValue: @unchecked Sendable {
     set {value = .bytesValue(newValue)}
   }
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   /// The value is one of the listed fields. It is valid for all values to be unspecified
   /// in which case this AnyValue is considered to be "empty".
@@ -131,14 +131,14 @@ package struct Opentelemetry_Proto_Common_V1_AnyValue: @unchecked Sendable {
 /// ArrayValue is a list of AnyValue messages. We need ArrayValue as a message
 /// since oneof in AnyValue does not allow repeated fields.
 package struct Opentelemetry_Proto_Common_V1_ArrayValue: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// Array of values. The array may be empty (contain 0 elements).
   package var values: [Opentelemetry_Proto_Common_V1_AnyValue] = []
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   package init() {}
 }
@@ -149,7 +149,7 @@ package struct Opentelemetry_Proto_Common_V1_ArrayValue: Sendable {
 /// avoid unnecessary extra wrapping (which slows down the protocol). The 2 approaches
 /// are semantically equivalent.
 package struct Opentelemetry_Proto_Common_V1_KeyValueList: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
@@ -159,7 +159,7 @@ package struct Opentelemetry_Proto_Common_V1_KeyValueList: Sendable {
   /// value with the same key).
   package var values: [Opentelemetry_Proto_Common_V1_KeyValue] = []
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   package init() {}
 }
@@ -167,7 +167,7 @@ package struct Opentelemetry_Proto_Common_V1_KeyValueList: Sendable {
 /// KeyValue is a key-value pair that is used to store Span attributes, Link
 /// attributes, etc.
 package struct Opentelemetry_Proto_Common_V1_KeyValue: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
@@ -182,7 +182,7 @@ package struct Opentelemetry_Proto_Common_V1_KeyValue: Sendable {
   /// Clears the value of `value`. Subsequent reads from it will return its default value.
   package mutating func clearValue() {self._value = nil}
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   package init() {}
 
@@ -192,7 +192,7 @@ package struct Opentelemetry_Proto_Common_V1_KeyValue: Sendable {
 /// InstrumentationScope is a message representing the instrumentation scope information
 /// such as the fully qualified name and version. 
 package struct Opentelemetry_Proto_Common_V1_InstrumentationScope: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
@@ -208,7 +208,7 @@ package struct Opentelemetry_Proto_Common_V1_InstrumentationScope: Sendable {
 
   package var droppedAttributesCount: UInt32 = 0
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   package init() {}
 }
@@ -217,9 +217,9 @@ package struct Opentelemetry_Proto_Common_V1_InstrumentationScope: Sendable {
 
 fileprivate let _protobuf_package = "opentelemetry.proto.common.v1"
 
-extension Opentelemetry_Proto_Common_V1_AnyValue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Common_V1_AnyValue: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".AnyValue"
-  package static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  package static let _protobuf_nameMap: CandleSwiftProtobuf._NameMap = [
     1: .standard(proto: "string_value"),
     2: .standard(proto: "bool_value"),
     3: .standard(proto: "int_value"),
@@ -229,7 +229,7 @@ extension Opentelemetry_Proto_Common_V1_AnyValue: SwiftProtobuf.Message, SwiftPr
     7: .standard(proto: "bytes_value"),
   ]
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -306,7 +306,7 @@ extension Opentelemetry_Proto_Common_V1_AnyValue: SwiftProtobuf.Message, SwiftPr
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -352,13 +352,13 @@ extension Opentelemetry_Proto_Common_V1_AnyValue: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Opentelemetry_Proto_Common_V1_ArrayValue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Common_V1_ArrayValue: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".ArrayValue"
-  package static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  package static let _protobuf_nameMap: CandleSwiftProtobuf._NameMap = [
     1: .same(proto: "values"),
   ]
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -370,7 +370,7 @@ extension Opentelemetry_Proto_Common_V1_ArrayValue: SwiftProtobuf.Message, Swift
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.values.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.values, fieldNumber: 1)
     }
@@ -384,13 +384,13 @@ extension Opentelemetry_Proto_Common_V1_ArrayValue: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Opentelemetry_Proto_Common_V1_KeyValueList: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Common_V1_KeyValueList: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".KeyValueList"
-  package static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  package static let _protobuf_nameMap: CandleSwiftProtobuf._NameMap = [
     1: .same(proto: "values"),
   ]
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -402,7 +402,7 @@ extension Opentelemetry_Proto_Common_V1_KeyValueList: SwiftProtobuf.Message, Swi
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.values.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.values, fieldNumber: 1)
     }
@@ -416,14 +416,14 @@ extension Opentelemetry_Proto_Common_V1_KeyValueList: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Opentelemetry_Proto_Common_V1_KeyValue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Common_V1_KeyValue: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".KeyValue"
-  package static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  package static let _protobuf_nameMap: CandleSwiftProtobuf._NameMap = [
     1: .same(proto: "key"),
     2: .same(proto: "value"),
   ]
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -436,7 +436,7 @@ extension Opentelemetry_Proto_Common_V1_KeyValue: SwiftProtobuf.Message, SwiftPr
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -458,16 +458,16 @@ extension Opentelemetry_Proto_Common_V1_KeyValue: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Opentelemetry_Proto_Common_V1_InstrumentationScope: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Common_V1_InstrumentationScope: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".InstrumentationScope"
-  package static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  package static let _protobuf_nameMap: CandleSwiftProtobuf._NameMap = [
     1: .same(proto: "name"),
     2: .same(proto: "version"),
     3: .same(proto: "attributes"),
     4: .standard(proto: "dropped_attributes_count"),
   ]
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -482,7 +482,7 @@ extension Opentelemetry_Proto_Common_V1_InstrumentationScope: SwiftProtobuf.Mess
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.name.isEmpty {
       try visitor.visitSingularStringField(value: self.name, fieldNumber: 1)
     }

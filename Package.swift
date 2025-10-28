@@ -69,8 +69,8 @@ let package = Package(
                 ///       best we can do until the SwiftPM issue is addressed.
                 // Depend on this if either trait is enabled.
                 // .product(name: "SwiftProtobuf", package: "swift-protobuf", condition: .when(traits: ["OTLPHTTP", "OTLPGRPC"])),
-                .product(name: "CandleSwiftProtobuf", package: "swift-protobuf", condition: .when(traits: ["OTLPHTTP"])),
-                .product(name: "CandleSwiftProtobuf", package: "swift-protobuf", condition: .when(traits: ["OTLPGRPC"])),
+                .product(name: "SwiftProtobuf", package: "swift-protobuf", condition: .when(traits: ["OTLPHTTP"])),
+                .product(name: "SwiftProtobuf", package: "swift-protobuf", condition: .when(traits: ["OTLPGRPC"])),
                 // OTLP/HTTP exporter -- only when OTLPHTTP trait is enabled.
                 .product(name: "AsyncHTTPClient", package: "async-http-client", condition: .when(traits: ["OTLPHTTP"])),
                 .product(name: "NIOSSL", package: "swift-nio-ssl", condition: .when(traits: ["OTLPHTTP"])),

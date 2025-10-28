@@ -37,15 +37,15 @@ package import CandleSwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
-  struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
+fileprivate struct _GeneratedWithProtocGenSwiftVersion: CandleSwiftProtobuf.ProtobufAPIVersionCheck {
+  struct _2: CandleSwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
 /// AggregationTemporality defines how a metric aggregator reports aggregated
 /// values. It describes how those values relate to the time interval over
 /// which they are aggregated.
-package enum Opentelemetry_Proto_Metrics_V1_AggregationTemporality: SwiftProtobuf.Enum, Swift.CaseIterable {
+package enum Opentelemetry_Proto_Metrics_V1_AggregationTemporality: CandleSwiftProtobuf.Enum, Swift.CaseIterable {
   package typealias RawValue = Int
 
   /// UNSPECIFIED is the default AggregationTemporality, it MUST not be used.
@@ -152,7 +152,7 @@ package enum Opentelemetry_Proto_Metrics_V1_AggregationTemporality: SwiftProtobu
 /// a data point, for example, use an expression like:
 ///
 ///   (point.flags & DATA_POINT_FLAGS_NO_RECORDED_VALUE_MASK) == DATA_POINT_FLAGS_NO_RECORDED_VALUE_MASK
-package enum Opentelemetry_Proto_Metrics_V1_DataPointFlags: SwiftProtobuf.Enum, Swift.CaseIterable {
+package enum Opentelemetry_Proto_Metrics_V1_DataPointFlags: CandleSwiftProtobuf.Enum, Swift.CaseIterable {
   package typealias RawValue = Int
 
   /// The zero value for the enum. Should not be used for comparisons.
@@ -204,7 +204,7 @@ package enum Opentelemetry_Proto_Metrics_V1_DataPointFlags: SwiftProtobuf.Enum, 
 /// When new fields are added into this message, the OTLP request MUST be updated
 /// as well.
 package struct Opentelemetry_Proto_Metrics_V1_MetricsData: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
@@ -215,14 +215,14 @@ package struct Opentelemetry_Proto_Metrics_V1_MetricsData: Sendable {
   /// array will contain multiple elements.
   package var resourceMetrics: [Opentelemetry_Proto_Metrics_V1_ResourceMetrics] = []
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   package init() {}
 }
 
 /// A collection of ScopeMetrics from a Resource.
 package struct Opentelemetry_Proto_Metrics_V1_ResourceMetrics: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
@@ -244,7 +244,7 @@ package struct Opentelemetry_Proto_Metrics_V1_ResourceMetrics: Sendable {
   /// to the data in the "scope_metrics" field which have their own schema_url field.
   package var schemaURL: String = String()
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   package init() {}
 
@@ -253,7 +253,7 @@ package struct Opentelemetry_Proto_Metrics_V1_ResourceMetrics: Sendable {
 
 /// A collection of Metrics produced by an Scope.
 package struct Opentelemetry_Proto_Metrics_V1_ScopeMetrics: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
@@ -275,7 +275,7 @@ package struct Opentelemetry_Proto_Metrics_V1_ScopeMetrics: Sendable {
   /// This schema_url applies to all metrics in the "metrics" field.
   package var schemaURL: String = String()
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   package init() {}
 
@@ -368,7 +368,7 @@ package struct Opentelemetry_Proto_Metrics_V1_ScopeMetrics: Sendable {
 /// when the start time is truly unknown, setting StartTimeUnixNano is
 /// strongly encouraged.
 package struct Opentelemetry_Proto_Metrics_V1_Metric: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
@@ -427,7 +427,7 @@ package struct Opentelemetry_Proto_Metrics_V1_Metric: Sendable {
     set {data = .summary(newValue)}
   }
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   /// Data determines the aggregation type (if any) of the metric, what is the
   /// reported value type for the data points, as well as the relatationship to
@@ -454,13 +454,13 @@ package struct Opentelemetry_Proto_Metrics_V1_Metric: Sendable {
 /// AggregationTemporality is not included. Consequently, this also means
 /// "StartTimeUnixNano" is ignored for all data points.
 package struct Opentelemetry_Proto_Metrics_V1_Gauge: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   package var dataPoints: [Opentelemetry_Proto_Metrics_V1_NumberDataPoint] = []
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   package init() {}
 }
@@ -468,7 +468,7 @@ package struct Opentelemetry_Proto_Metrics_V1_Gauge: Sendable {
 /// Sum represents the type of a scalar metric that is calculated as a sum of all
 /// reported measurements over a time interval.
 package struct Opentelemetry_Proto_Metrics_V1_Sum: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
@@ -481,7 +481,7 @@ package struct Opentelemetry_Proto_Metrics_V1_Sum: Sendable {
   /// If "true" means that the sum is monotonic.
   package var isMonotonic: Bool = false
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   package init() {}
 }
@@ -489,7 +489,7 @@ package struct Opentelemetry_Proto_Metrics_V1_Sum: Sendable {
 /// Histogram represents the type of a metric that is calculated by aggregating
 /// as a Histogram of all reported measurements over a time interval.
 package struct Opentelemetry_Proto_Metrics_V1_Histogram: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
@@ -499,7 +499,7 @@ package struct Opentelemetry_Proto_Metrics_V1_Histogram: Sendable {
   /// since last report time, or cumulative changes since a fixed start time.
   package var aggregationTemporality: Opentelemetry_Proto_Metrics_V1_AggregationTemporality = .unspecified
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   package init() {}
 }
@@ -507,7 +507,7 @@ package struct Opentelemetry_Proto_Metrics_V1_Histogram: Sendable {
 /// ExponentialHistogram represents the type of a metric that is calculated by aggregating
 /// as a ExponentialHistogram of all reported double measurements over a time interval.
 package struct Opentelemetry_Proto_Metrics_V1_ExponentialHistogram: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
@@ -517,7 +517,7 @@ package struct Opentelemetry_Proto_Metrics_V1_ExponentialHistogram: Sendable {
   /// since last report time, or cumulative changes since a fixed start time.
   package var aggregationTemporality: Opentelemetry_Proto_Metrics_V1_AggregationTemporality = .unspecified
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   package init() {}
 }
@@ -529,13 +529,13 @@ package struct Opentelemetry_Proto_Metrics_V1_ExponentialHistogram: Sendable {
 /// While they can be useful in some applications, histogram data points are
 /// recommended for new applications.
 package struct Opentelemetry_Proto_Metrics_V1_Summary: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   package var dataPoints: [Opentelemetry_Proto_Metrics_V1_SummaryDataPoint] = []
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   package init() {}
 }
@@ -543,7 +543,7 @@ package struct Opentelemetry_Proto_Metrics_V1_Summary: Sendable {
 /// NumberDataPoint is a single data point in a timeseries that describes the
 /// time-varying scalar value of a metric.
 package struct Opentelemetry_Proto_Metrics_V1_NumberDataPoint: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
@@ -594,7 +594,7 @@ package struct Opentelemetry_Proto_Metrics_V1_NumberDataPoint: Sendable {
   /// for the available flags and their meaning.
   package var flags: UInt32 = 0
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   /// The value itself.  A point is considered invalid when one of the recognized
   /// value fields is not present inside this oneof.
@@ -618,7 +618,7 @@ package struct Opentelemetry_Proto_Metrics_V1_NumberDataPoint: Sendable {
 /// "explicit_bounds" and "bucket_counts" must be omitted and only "count" and
 /// "sum" are known.
 package struct Opentelemetry_Proto_Metrics_V1_HistogramDataPoint: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
@@ -715,7 +715,7 @@ package struct Opentelemetry_Proto_Metrics_V1_HistogramDataPoint: Sendable {
   /// Clears the value of `max`. Subsequent reads from it will return its default value.
   package mutating func clearMax() {self._max = nil}
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   package init() {}
 
@@ -729,7 +729,7 @@ package struct Opentelemetry_Proto_Metrics_V1_HistogramDataPoint: Sendable {
 /// summary statistics for a population of values, it may optionally contain the
 /// distribution of those values across a set of buckets.
 package struct Opentelemetry_Proto_Metrics_V1_ExponentialHistogramDataPoint: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
@@ -857,12 +857,12 @@ package struct Opentelemetry_Proto_Metrics_V1_ExponentialHistogramDataPoint: Sen
   /// have been rounded to zero.
   package var zeroThreshold: Double = 0
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   /// Buckets are a set of bucket counts, encoded in a contiguous array
   /// of counts.
   package struct Buckets: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
 
@@ -882,7 +882,7 @@ package struct Opentelemetry_Proto_Metrics_V1_ExponentialHistogramDataPoint: Sen
     /// varint encoding.
     package var bucketCounts: [UInt64] = []
 
-    package var unknownFields = SwiftProtobuf.UnknownStorage()
+    package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
     package init() {}
   }
@@ -899,7 +899,7 @@ package struct Opentelemetry_Proto_Metrics_V1_ExponentialHistogramDataPoint: Sen
 /// SummaryDataPoint is a single data point in a timeseries that describes the
 /// time-varying values of a Summary metric.
 package struct Opentelemetry_Proto_Metrics_V1_SummaryDataPoint: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
@@ -943,7 +943,7 @@ package struct Opentelemetry_Proto_Metrics_V1_SummaryDataPoint: Sendable {
   /// for the available flags and their meaning.
   package var flags: UInt32 = 0
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   /// Represents the value at a given quantile of a distribution.
   ///
@@ -954,7 +954,7 @@ package struct Opentelemetry_Proto_Metrics_V1_SummaryDataPoint: Sendable {
   /// See the following issue for more context:
   /// https://github.com/open-telemetry/opentelemetry-proto/issues/125
   package struct ValueAtQuantile: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
 
@@ -967,7 +967,7 @@ package struct Opentelemetry_Proto_Metrics_V1_SummaryDataPoint: Sendable {
     /// Quantile values must NOT be negative.
     package var value: Double = 0
 
-    package var unknownFields = SwiftProtobuf.UnknownStorage()
+    package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
     package init() {}
   }
@@ -980,7 +980,7 @@ package struct Opentelemetry_Proto_Metrics_V1_SummaryDataPoint: Sendable {
 /// was recorded, for example the span and trace ID of the active span when the
 /// exemplar was recorded.
 package struct Opentelemetry_Proto_Metrics_V1_Exemplar: @unchecked Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
@@ -1026,7 +1026,7 @@ package struct Opentelemetry_Proto_Metrics_V1_Exemplar: @unchecked Sendable {
   /// or if the trace is not sampled.
   package var traceID: Data = Data()
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   /// The value of the measurement that was recorded. An exemplar is
   /// considered invalid when one of the recognized value fields is not present
@@ -1044,28 +1044,28 @@ package struct Opentelemetry_Proto_Metrics_V1_Exemplar: @unchecked Sendable {
 
 fileprivate let _protobuf_package = "opentelemetry.proto.metrics.v1"
 
-extension Opentelemetry_Proto_Metrics_V1_AggregationTemporality: SwiftProtobuf._ProtoNameProviding {
-  package static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+extension Opentelemetry_Proto_Metrics_V1_AggregationTemporality: CandleSwiftProtobuf._ProtoNameProviding {
+  package static let _protobuf_nameMap: CandleSwiftProtobuf._NameMap = [
     0: .same(proto: "AGGREGATION_TEMPORALITY_UNSPECIFIED"),
     1: .same(proto: "AGGREGATION_TEMPORALITY_DELTA"),
     2: .same(proto: "AGGREGATION_TEMPORALITY_CUMULATIVE"),
   ]
 }
 
-extension Opentelemetry_Proto_Metrics_V1_DataPointFlags: SwiftProtobuf._ProtoNameProviding {
-  package static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+extension Opentelemetry_Proto_Metrics_V1_DataPointFlags: CandleSwiftProtobuf._ProtoNameProviding {
+  package static let _protobuf_nameMap: CandleSwiftProtobuf._NameMap = [
     0: .same(proto: "DATA_POINT_FLAGS_DO_NOT_USE"),
     1: .same(proto: "DATA_POINT_FLAGS_NO_RECORDED_VALUE_MASK"),
   ]
 }
 
-extension Opentelemetry_Proto_Metrics_V1_MetricsData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Metrics_V1_MetricsData: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".MetricsData"
-  package static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  package static let _protobuf_nameMap: CandleSwiftProtobuf._NameMap = [
     1: .standard(proto: "resource_metrics"),
   ]
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -1077,7 +1077,7 @@ extension Opentelemetry_Proto_Metrics_V1_MetricsData: SwiftProtobuf.Message, Swi
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.resourceMetrics.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.resourceMetrics, fieldNumber: 1)
     }
@@ -1091,9 +1091,9 @@ extension Opentelemetry_Proto_Metrics_V1_MetricsData: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Opentelemetry_Proto_Metrics_V1_ResourceMetrics: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Metrics_V1_ResourceMetrics: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".ResourceMetrics"
-  package static let _protobuf_nameMap = SwiftProtobuf._NameMap(
+  package static let _protobuf_nameMap = CandleSwiftProtobuf._NameMap(
       reservedNames: [],
       reservedRanges: [1000..<1001],
       numberNameMappings: [
@@ -1102,7 +1102,7 @@ extension Opentelemetry_Proto_Metrics_V1_ResourceMetrics: SwiftProtobuf.Message,
         3: .standard(proto: "schema_url"),
   ])
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -1116,7 +1116,7 @@ extension Opentelemetry_Proto_Metrics_V1_ResourceMetrics: SwiftProtobuf.Message,
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -1142,15 +1142,15 @@ extension Opentelemetry_Proto_Metrics_V1_ResourceMetrics: SwiftProtobuf.Message,
   }
 }
 
-extension Opentelemetry_Proto_Metrics_V1_ScopeMetrics: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Metrics_V1_ScopeMetrics: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".ScopeMetrics"
-  package static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  package static let _protobuf_nameMap: CandleSwiftProtobuf._NameMap = [
     1: .same(proto: "scope"),
     2: .same(proto: "metrics"),
     3: .standard(proto: "schema_url"),
   ]
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -1164,7 +1164,7 @@ extension Opentelemetry_Proto_Metrics_V1_ScopeMetrics: SwiftProtobuf.Message, Sw
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -1190,9 +1190,9 @@ extension Opentelemetry_Proto_Metrics_V1_ScopeMetrics: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Opentelemetry_Proto_Metrics_V1_Metric: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Metrics_V1_Metric: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".Metric"
-  package static let _protobuf_nameMap = SwiftProtobuf._NameMap(
+  package static let _protobuf_nameMap = CandleSwiftProtobuf._NameMap(
       reservedNames: [],
       reservedRanges: [4..<5, 6..<7, 8..<9],
       numberNameMappings: [
@@ -1206,7 +1206,7 @@ extension Opentelemetry_Proto_Metrics_V1_Metric: SwiftProtobuf.Message, SwiftPro
         11: .same(proto: "summary"),
   ])
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -1285,7 +1285,7 @@ extension Opentelemetry_Proto_Metrics_V1_Metric: SwiftProtobuf.Message, SwiftPro
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -1335,13 +1335,13 @@ extension Opentelemetry_Proto_Metrics_V1_Metric: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Opentelemetry_Proto_Metrics_V1_Gauge: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Metrics_V1_Gauge: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".Gauge"
-  package static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  package static let _protobuf_nameMap: CandleSwiftProtobuf._NameMap = [
     1: .standard(proto: "data_points"),
   ]
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -1353,7 +1353,7 @@ extension Opentelemetry_Proto_Metrics_V1_Gauge: SwiftProtobuf.Message, SwiftProt
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.dataPoints.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.dataPoints, fieldNumber: 1)
     }
@@ -1367,15 +1367,15 @@ extension Opentelemetry_Proto_Metrics_V1_Gauge: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Opentelemetry_Proto_Metrics_V1_Sum: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Metrics_V1_Sum: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".Sum"
-  package static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  package static let _protobuf_nameMap: CandleSwiftProtobuf._NameMap = [
     1: .standard(proto: "data_points"),
     2: .standard(proto: "aggregation_temporality"),
     3: .standard(proto: "is_monotonic"),
   ]
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -1389,7 +1389,7 @@ extension Opentelemetry_Proto_Metrics_V1_Sum: SwiftProtobuf.Message, SwiftProtob
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.dataPoints.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.dataPoints, fieldNumber: 1)
     }
@@ -1411,14 +1411,14 @@ extension Opentelemetry_Proto_Metrics_V1_Sum: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Opentelemetry_Proto_Metrics_V1_Histogram: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Metrics_V1_Histogram: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".Histogram"
-  package static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  package static let _protobuf_nameMap: CandleSwiftProtobuf._NameMap = [
     1: .standard(proto: "data_points"),
     2: .standard(proto: "aggregation_temporality"),
   ]
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -1431,7 +1431,7 @@ extension Opentelemetry_Proto_Metrics_V1_Histogram: SwiftProtobuf.Message, Swift
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.dataPoints.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.dataPoints, fieldNumber: 1)
     }
@@ -1449,14 +1449,14 @@ extension Opentelemetry_Proto_Metrics_V1_Histogram: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Opentelemetry_Proto_Metrics_V1_ExponentialHistogram: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Metrics_V1_ExponentialHistogram: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".ExponentialHistogram"
-  package static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  package static let _protobuf_nameMap: CandleSwiftProtobuf._NameMap = [
     1: .standard(proto: "data_points"),
     2: .standard(proto: "aggregation_temporality"),
   ]
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -1469,7 +1469,7 @@ extension Opentelemetry_Proto_Metrics_V1_ExponentialHistogram: SwiftProtobuf.Mes
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.dataPoints.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.dataPoints, fieldNumber: 1)
     }
@@ -1487,13 +1487,13 @@ extension Opentelemetry_Proto_Metrics_V1_ExponentialHistogram: SwiftProtobuf.Mes
   }
 }
 
-extension Opentelemetry_Proto_Metrics_V1_Summary: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Metrics_V1_Summary: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".Summary"
-  package static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  package static let _protobuf_nameMap: CandleSwiftProtobuf._NameMap = [
     1: .standard(proto: "data_points"),
   ]
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -1505,7 +1505,7 @@ extension Opentelemetry_Proto_Metrics_V1_Summary: SwiftProtobuf.Message, SwiftPr
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.dataPoints.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.dataPoints, fieldNumber: 1)
     }
@@ -1519,9 +1519,9 @@ extension Opentelemetry_Proto_Metrics_V1_Summary: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Opentelemetry_Proto_Metrics_V1_NumberDataPoint: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Metrics_V1_NumberDataPoint: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".NumberDataPoint"
-  package static let _protobuf_nameMap = SwiftProtobuf._NameMap(
+  package static let _protobuf_nameMap = CandleSwiftProtobuf._NameMap(
       reservedNames: [],
       reservedRanges: [1..<2],
       numberNameMappings: [
@@ -1534,7 +1534,7 @@ extension Opentelemetry_Proto_Metrics_V1_NumberDataPoint: SwiftProtobuf.Message,
         8: .same(proto: "flags"),
   ])
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -1566,7 +1566,7 @@ extension Opentelemetry_Proto_Metrics_V1_NumberDataPoint: SwiftProtobuf.Message,
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -1607,9 +1607,9 @@ extension Opentelemetry_Proto_Metrics_V1_NumberDataPoint: SwiftProtobuf.Message,
   }
 }
 
-extension Opentelemetry_Proto_Metrics_V1_HistogramDataPoint: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Metrics_V1_HistogramDataPoint: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".HistogramDataPoint"
-  package static let _protobuf_nameMap = SwiftProtobuf._NameMap(
+  package static let _protobuf_nameMap = CandleSwiftProtobuf._NameMap(
       reservedNames: [],
       reservedRanges: [1..<2],
       numberNameMappings: [
@@ -1626,7 +1626,7 @@ extension Opentelemetry_Proto_Metrics_V1_HistogramDataPoint: SwiftProtobuf.Messa
         12: .same(proto: "max"),
   ])
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -1648,7 +1648,7 @@ extension Opentelemetry_Proto_Metrics_V1_HistogramDataPoint: SwiftProtobuf.Messa
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -1706,9 +1706,9 @@ extension Opentelemetry_Proto_Metrics_V1_HistogramDataPoint: SwiftProtobuf.Messa
   }
 }
 
-extension Opentelemetry_Proto_Metrics_V1_ExponentialHistogramDataPoint: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Metrics_V1_ExponentialHistogramDataPoint: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".ExponentialHistogramDataPoint"
-  package static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  package static let _protobuf_nameMap: CandleSwiftProtobuf._NameMap = [
     1: .same(proto: "attributes"),
     2: .standard(proto: "start_time_unix_nano"),
     3: .standard(proto: "time_unix_nano"),
@@ -1725,7 +1725,7 @@ extension Opentelemetry_Proto_Metrics_V1_ExponentialHistogramDataPoint: SwiftPro
     14: .standard(proto: "zero_threshold"),
   ]
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -1750,7 +1750,7 @@ extension Opentelemetry_Proto_Metrics_V1_ExponentialHistogramDataPoint: SwiftPro
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -1820,14 +1820,14 @@ extension Opentelemetry_Proto_Metrics_V1_ExponentialHistogramDataPoint: SwiftPro
   }
 }
 
-extension Opentelemetry_Proto_Metrics_V1_ExponentialHistogramDataPoint.Buckets: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Metrics_V1_ExponentialHistogramDataPoint.Buckets: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = Opentelemetry_Proto_Metrics_V1_ExponentialHistogramDataPoint.protoMessageName + ".Buckets"
-  package static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  package static let _protobuf_nameMap: CandleSwiftProtobuf._NameMap = [
     1: .same(proto: "offset"),
     2: .standard(proto: "bucket_counts"),
   ]
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -1840,7 +1840,7 @@ extension Opentelemetry_Proto_Metrics_V1_ExponentialHistogramDataPoint.Buckets: 
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.offset != 0 {
       try visitor.visitSingularSInt32Field(value: self.offset, fieldNumber: 1)
     }
@@ -1858,9 +1858,9 @@ extension Opentelemetry_Proto_Metrics_V1_ExponentialHistogramDataPoint.Buckets: 
   }
 }
 
-extension Opentelemetry_Proto_Metrics_V1_SummaryDataPoint: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Metrics_V1_SummaryDataPoint: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".SummaryDataPoint"
-  package static let _protobuf_nameMap = SwiftProtobuf._NameMap(
+  package static let _protobuf_nameMap = CandleSwiftProtobuf._NameMap(
       reservedNames: [],
       reservedRanges: [1..<2],
       numberNameMappings: [
@@ -1873,7 +1873,7 @@ extension Opentelemetry_Proto_Metrics_V1_SummaryDataPoint: SwiftProtobuf.Message
         8: .same(proto: "flags"),
   ])
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -1891,7 +1891,7 @@ extension Opentelemetry_Proto_Metrics_V1_SummaryDataPoint: SwiftProtobuf.Message
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.startTimeUnixNano != 0 {
       try visitor.visitSingularFixed64Field(value: self.startTimeUnixNano, fieldNumber: 2)
     }
@@ -1929,14 +1929,14 @@ extension Opentelemetry_Proto_Metrics_V1_SummaryDataPoint: SwiftProtobuf.Message
   }
 }
 
-extension Opentelemetry_Proto_Metrics_V1_SummaryDataPoint.ValueAtQuantile: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Metrics_V1_SummaryDataPoint.ValueAtQuantile: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = Opentelemetry_Proto_Metrics_V1_SummaryDataPoint.protoMessageName + ".ValueAtQuantile"
-  package static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  package static let _protobuf_nameMap: CandleSwiftProtobuf._NameMap = [
     1: .same(proto: "quantile"),
     2: .same(proto: "value"),
   ]
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -1949,7 +1949,7 @@ extension Opentelemetry_Proto_Metrics_V1_SummaryDataPoint.ValueAtQuantile: Swift
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.quantile.bitPattern != 0 {
       try visitor.visitSingularDoubleField(value: self.quantile, fieldNumber: 1)
     }
@@ -1967,9 +1967,9 @@ extension Opentelemetry_Proto_Metrics_V1_SummaryDataPoint.ValueAtQuantile: Swift
   }
 }
 
-extension Opentelemetry_Proto_Metrics_V1_Exemplar: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Metrics_V1_Exemplar: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".Exemplar"
-  package static let _protobuf_nameMap = SwiftProtobuf._NameMap(
+  package static let _protobuf_nameMap = CandleSwiftProtobuf._NameMap(
       reservedNames: [],
       reservedRanges: [1..<2],
       numberNameMappings: [
@@ -1981,7 +1981,7 @@ extension Opentelemetry_Proto_Metrics_V1_Exemplar: SwiftProtobuf.Message, SwiftP
         5: .standard(proto: "trace_id"),
   ])
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -2012,7 +2012,7 @@ extension Opentelemetry_Proto_Metrics_V1_Exemplar: SwiftProtobuf.Message, SwiftP
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and

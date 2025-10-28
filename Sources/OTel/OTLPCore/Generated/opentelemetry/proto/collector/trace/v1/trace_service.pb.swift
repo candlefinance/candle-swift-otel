@@ -32,13 +32,13 @@ package import CandleSwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
-  struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
+fileprivate struct _GeneratedWithProtocGenSwiftVersion: CandleSwiftProtobuf.ProtobufAPIVersionCheck {
+  struct _2: CandleSwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
 package struct Opentelemetry_Proto_Collector_Trace_V1_ExportTraceServiceRequest: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
@@ -49,13 +49,13 @@ package struct Opentelemetry_Proto_Collector_Trace_V1_ExportTraceServiceRequest:
   /// in that case this array will contain multiple elements.
   package var resourceSpans: [Opentelemetry_Proto_Trace_V1_ResourceSpans] = []
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   package init() {}
 }
 
 package struct Opentelemetry_Proto_Collector_Trace_V1_ExportTraceServiceResponse: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
@@ -83,7 +83,7 @@ package struct Opentelemetry_Proto_Collector_Trace_V1_ExportTraceServiceResponse
   /// Clears the value of `partialSuccess`. Subsequent reads from it will return its default value.
   package mutating func clearPartialSuccess() {self._partialSuccess = nil}
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   package init() {}
 
@@ -91,7 +91,7 @@ package struct Opentelemetry_Proto_Collector_Trace_V1_ExportTraceServiceResponse
 }
 
 package struct Opentelemetry_Proto_Collector_Trace_V1_ExportTracePartialSuccess: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
@@ -110,7 +110,7 @@ package struct Opentelemetry_Proto_Collector_Trace_V1_ExportTracePartialSuccess:
   /// is equivalent to it not being set.
   package var errorMessage: String = String()
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   package init() {}
 }
@@ -119,13 +119,13 @@ package struct Opentelemetry_Proto_Collector_Trace_V1_ExportTracePartialSuccess:
 
 fileprivate let _protobuf_package = "opentelemetry.proto.collector.trace.v1"
 
-extension Opentelemetry_Proto_Collector_Trace_V1_ExportTraceServiceRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Collector_Trace_V1_ExportTraceServiceRequest: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".ExportTraceServiceRequest"
-  package static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  package static let _protobuf_nameMap: CandleSwiftProtobuf._NameMap = [
     1: .standard(proto: "resource_spans"),
   ]
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -137,7 +137,7 @@ extension Opentelemetry_Proto_Collector_Trace_V1_ExportTraceServiceRequest: Swif
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.resourceSpans.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.resourceSpans, fieldNumber: 1)
     }
@@ -151,13 +151,13 @@ extension Opentelemetry_Proto_Collector_Trace_V1_ExportTraceServiceRequest: Swif
   }
 }
 
-extension Opentelemetry_Proto_Collector_Trace_V1_ExportTraceServiceResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Collector_Trace_V1_ExportTraceServiceResponse: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".ExportTraceServiceResponse"
-  package static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  package static let _protobuf_nameMap: CandleSwiftProtobuf._NameMap = [
     1: .standard(proto: "partial_success"),
   ]
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -169,7 +169,7 @@ extension Opentelemetry_Proto_Collector_Trace_V1_ExportTraceServiceResponse: Swi
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -187,14 +187,14 @@ extension Opentelemetry_Proto_Collector_Trace_V1_ExportTraceServiceResponse: Swi
   }
 }
 
-extension Opentelemetry_Proto_Collector_Trace_V1_ExportTracePartialSuccess: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Collector_Trace_V1_ExportTracePartialSuccess: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".ExportTracePartialSuccess"
-  package static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  package static let _protobuf_nameMap: CandleSwiftProtobuf._NameMap = [
     1: .standard(proto: "rejected_spans"),
     2: .standard(proto: "error_message"),
   ]
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -207,7 +207,7 @@ extension Opentelemetry_Proto_Collector_Trace_V1_ExportTracePartialSuccess: Swif
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.rejectedSpans != 0 {
       try visitor.visitSingularInt64Field(value: self.rejectedSpans, fieldNumber: 1)
     }

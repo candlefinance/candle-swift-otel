@@ -37,13 +37,13 @@ package import CandleSwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
-  struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
+fileprivate struct _GeneratedWithProtocGenSwiftVersion: CandleSwiftProtobuf.ProtobufAPIVersionCheck {
+  struct _2: CandleSwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
 /// Possible values for LogRecord.SeverityNumber.
-package enum Opentelemetry_Proto_Logs_V1_SeverityNumber: SwiftProtobuf.Enum, Swift.CaseIterable {
+package enum Opentelemetry_Proto_Logs_V1_SeverityNumber: CandleSwiftProtobuf.Enum, Swift.CaseIterable {
   package typealias RawValue = Int
 
   /// UNSPECIFIED is the default SeverityNumber, it MUST NOT be used.
@@ -176,7 +176,7 @@ package enum Opentelemetry_Proto_Logs_V1_SeverityNumber: SwiftProtobuf.Enum, Swi
 /// To extract the bit-field, for example, use an expression like:
 ///
 ///   (logRecord.flags & LOG_RECORD_FLAGS_TRACE_FLAGS_MASK)
-package enum Opentelemetry_Proto_Logs_V1_LogRecordFlags: SwiftProtobuf.Enum, Swift.CaseIterable {
+package enum Opentelemetry_Proto_Logs_V1_LogRecordFlags: CandleSwiftProtobuf.Enum, Swift.CaseIterable {
   package typealias RawValue = Int
 
   /// The zero value for the enum. Should not be used for comparisons.
@@ -226,7 +226,7 @@ package enum Opentelemetry_Proto_Logs_V1_LogRecordFlags: SwiftProtobuf.Enum, Swi
 /// When new fields are added into this message, the OTLP request MUST be updated
 /// as well.
 package struct Opentelemetry_Proto_Logs_V1_LogsData: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
@@ -237,14 +237,14 @@ package struct Opentelemetry_Proto_Logs_V1_LogsData: Sendable {
   /// array will contain multiple elements.
   package var resourceLogs: [Opentelemetry_Proto_Logs_V1_ResourceLogs] = []
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   package init() {}
 }
 
 /// A collection of ScopeLogs from a Resource.
 package struct Opentelemetry_Proto_Logs_V1_ResourceLogs: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
@@ -266,7 +266,7 @@ package struct Opentelemetry_Proto_Logs_V1_ResourceLogs: Sendable {
   /// to the data in the "scope_logs" field which have their own schema_url field.
   package var schemaURL: String = String()
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   package init() {}
 
@@ -275,7 +275,7 @@ package struct Opentelemetry_Proto_Logs_V1_ResourceLogs: Sendable {
 
 /// A collection of Logs produced by a Scope.
 package struct Opentelemetry_Proto_Logs_V1_ScopeLogs: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
@@ -297,7 +297,7 @@ package struct Opentelemetry_Proto_Logs_V1_ScopeLogs: Sendable {
   /// This schema_url applies to all logs in the "logs" field.
   package var schemaURL: String = String()
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   package init() {}
 
@@ -307,7 +307,7 @@ package struct Opentelemetry_Proto_Logs_V1_ScopeLogs: Sendable {
 /// A log record according to OpenTelemetry Log Data Model:
 /// https://github.com/open-telemetry/oteps/blob/main/text/logs/0097-log-data-model.md
 package struct Opentelemetry_Proto_Logs_V1_LogRecord: @unchecked Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // CandleSwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
@@ -394,7 +394,7 @@ package struct Opentelemetry_Proto_Logs_V1_LogRecord: @unchecked Sendable {
   ///   - the field contains an invalid value.
   package var spanID: Data = Data()
 
-  package var unknownFields = SwiftProtobuf.UnknownStorage()
+  package var unknownFields = CandleSwiftProtobuf.UnknownStorage()
 
   package init() {}
 
@@ -405,8 +405,8 @@ package struct Opentelemetry_Proto_Logs_V1_LogRecord: @unchecked Sendable {
 
 fileprivate let _protobuf_package = "opentelemetry.proto.logs.v1"
 
-extension Opentelemetry_Proto_Logs_V1_SeverityNumber: SwiftProtobuf._ProtoNameProviding {
-  package static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+extension Opentelemetry_Proto_Logs_V1_SeverityNumber: CandleSwiftProtobuf._ProtoNameProviding {
+  package static let _protobuf_nameMap: CandleSwiftProtobuf._NameMap = [
     0: .same(proto: "SEVERITY_NUMBER_UNSPECIFIED"),
     1: .same(proto: "SEVERITY_NUMBER_TRACE"),
     2: .same(proto: "SEVERITY_NUMBER_TRACE2"),
@@ -435,20 +435,20 @@ extension Opentelemetry_Proto_Logs_V1_SeverityNumber: SwiftProtobuf._ProtoNamePr
   ]
 }
 
-extension Opentelemetry_Proto_Logs_V1_LogRecordFlags: SwiftProtobuf._ProtoNameProviding {
-  package static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+extension Opentelemetry_Proto_Logs_V1_LogRecordFlags: CandleSwiftProtobuf._ProtoNameProviding {
+  package static let _protobuf_nameMap: CandleSwiftProtobuf._NameMap = [
     0: .same(proto: "LOG_RECORD_FLAGS_DO_NOT_USE"),
     255: .same(proto: "LOG_RECORD_FLAGS_TRACE_FLAGS_MASK"),
   ]
 }
 
-extension Opentelemetry_Proto_Logs_V1_LogsData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Logs_V1_LogsData: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".LogsData"
-  package static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  package static let _protobuf_nameMap: CandleSwiftProtobuf._NameMap = [
     1: .standard(proto: "resource_logs"),
   ]
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -460,7 +460,7 @@ extension Opentelemetry_Proto_Logs_V1_LogsData: SwiftProtobuf.Message, SwiftProt
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.resourceLogs.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.resourceLogs, fieldNumber: 1)
     }
@@ -474,9 +474,9 @@ extension Opentelemetry_Proto_Logs_V1_LogsData: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Opentelemetry_Proto_Logs_V1_ResourceLogs: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Logs_V1_ResourceLogs: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".ResourceLogs"
-  package static let _protobuf_nameMap = SwiftProtobuf._NameMap(
+  package static let _protobuf_nameMap = CandleSwiftProtobuf._NameMap(
       reservedNames: [],
       reservedRanges: [1000..<1001],
       numberNameMappings: [
@@ -485,7 +485,7 @@ extension Opentelemetry_Proto_Logs_V1_ResourceLogs: SwiftProtobuf.Message, Swift
         3: .standard(proto: "schema_url"),
   ])
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -499,7 +499,7 @@ extension Opentelemetry_Proto_Logs_V1_ResourceLogs: SwiftProtobuf.Message, Swift
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -525,15 +525,15 @@ extension Opentelemetry_Proto_Logs_V1_ResourceLogs: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Opentelemetry_Proto_Logs_V1_ScopeLogs: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Logs_V1_ScopeLogs: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".ScopeLogs"
-  package static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  package static let _protobuf_nameMap: CandleSwiftProtobuf._NameMap = [
     1: .same(proto: "scope"),
     2: .standard(proto: "log_records"),
     3: .standard(proto: "schema_url"),
   ]
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -547,7 +547,7 @@ extension Opentelemetry_Proto_Logs_V1_ScopeLogs: SwiftProtobuf.Message, SwiftPro
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -573,9 +573,9 @@ extension Opentelemetry_Proto_Logs_V1_ScopeLogs: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Opentelemetry_Proto_Logs_V1_LogRecord: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Opentelemetry_Proto_Logs_V1_LogRecord: CandleSwiftProtobuf.Message, CandleSwiftProtobuf._MessageImplementationBase, CandleSwiftProtobuf._ProtoNameProviding {
   package static let protoMessageName: String = _protobuf_package + ".LogRecord"
-  package static let _protobuf_nameMap = SwiftProtobuf._NameMap(
+  package static let _protobuf_nameMap = CandleSwiftProtobuf._NameMap(
       reservedNames: [],
       reservedRanges: [4..<5],
       numberNameMappings: [
@@ -591,7 +591,7 @@ extension Opentelemetry_Proto_Logs_V1_LogRecord: SwiftProtobuf.Message, SwiftPro
         10: .standard(proto: "span_id"),
   ])
 
-  package mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  package mutating func decodeMessage<D: CandleSwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -612,7 +612,7 @@ extension Opentelemetry_Proto_Logs_V1_LogRecord: SwiftProtobuf.Message, SwiftPro
     }
   }
 
-  package func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  package func traverse<V: CandleSwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and

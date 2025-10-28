@@ -19,7 +19,7 @@ import Logging
 import NIOHTTP1
 import NIOSSL
 import ServiceLifecycle
-import SwiftProtobuf
+import CandleSwiftProtobuf
 
 #if canImport(FoundationEssentials)
 import class FoundationEssentials.FileManager

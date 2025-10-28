@@ -15,7 +15,7 @@ import GRPCCore
 import GRPCNIOTransportHTTP2Posix
 import NIOConcurrencyHelpers
 import OTel
-import SwiftProtobuf
+import CandleSwiftProtobuf
 import XCTest
 
 @available(gRPCSwift, *)

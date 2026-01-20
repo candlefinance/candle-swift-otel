@@ -34,12 +34,17 @@ final class OTLPHTTPSpanExporter: OTelSpanExporter {
     }
 
     func export(_ batch: some Collection<OTelFinishedSpan> & Sendable) async throws {
+        logger.info("Exporting HTTP spans")
         guard !batch.isEmpty else { return }
+        logger.info("Non empty HTTP spans")
         let proto = Request.with { request in
             request.resourceSpans = [Opentelemetry_Proto_Trace_V1_ResourceSpans(batch)]
         }
+        logger.info("Made proto")
         let response = try await exporter.send(proto)
+        logger.info("Sent proto")
         if response.hasPartialSuccess {
+            logger.info("Partial success")
             // https://opentelemetry.io/docs/specs/otlp/#partial-success-1
             /// > If the request is only partially accepted ... the server MUST initialize the `partial_success` field
             /// > ... and it MUST set the respective `rejected_spans`, `rejected_data_points`, `rejected_log_records`

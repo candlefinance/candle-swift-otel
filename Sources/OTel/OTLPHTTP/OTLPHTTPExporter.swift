@@ -60,6 +60,7 @@ final class OTLPHTTPExporter<Request: Message, Response: Message>: Sendable {
     }
 
     func send(_ proto: Request) async throws -> Response {
+        logger.info("Sending HTTP export")
         // https://opentelemetry.io/docs/specs/otlp/#otlphttp-request
         var request = HTTPClientRequest(url: self.configuration.endpoint)
         request.method = .POST
@@ -68,27 +69,34 @@ final class OTLPHTTPExporter<Request: Message, Response: Message>: Sendable {
         }
         switch self.configuration.protocol.backing {
         case .httpProtobuf:
+            logger.info("HTTP protobuf")
             // https://opentelemetry.io/docs/specs/otlp/#binary-protobuf-encoding
             let body: ByteBufferWrapper = try proto.serializedBytes()
+            logger.info("Got serialized bytes")
             request.body = .bytes(body.backing)
             request.headers.replaceOrAdd(name: "Content-Type", value: "application/x-protobuf")
         case .httpJSON:
+            logger.info("HTTP json")
             // https://opentelemetry.io/docs/specs/otlp/#json-protobuf-encoding
             var encodingOptions = JSONEncodingOptions()
             encodingOptions.alwaysPrintInt64sAsNumbers = false
             encodingOptions.alwaysPrintEnumsAsInts = true
             encodingOptions.preserveProtoFieldNames = false
             let body: ByteBufferWrapper = try proto.jsonUTF8Bytes(options: encodingOptions)
+            logger.info("Got json utf8 bytes")
             request.body = .bytes(body.backing)
             request.headers.replaceOrAdd(name: "Content-Type", value: "application/json")
         case .grpc:
             preconditionFailure("unreachable")
         }
+        logger.info("Configured content-specific request")
 
         // https://opentelemetry.io/docs/specs/otel/protocol/exporter/#user-agent
         request.headers.replaceOrAdd(name: "User-Agent", value: "OTel-OTLP-Exporter-Swift/\(OTelLibrary.version)")
         // https://opentelemetry.io/docs/specs/otlp/#otlphttp-connection
         request.headers.replaceOrAdd(name: "Connection", value: "keep-alive")
+        
+        logger.info("Configured generic request")
 
         // https://opentelemetry.io/docs/specs/otlp/#otlphttp-response
         let response = try await self.httpClient.execute(
@@ -97,8 +105,10 @@ final class OTLPHTTPExporter<Request: Message, Response: Message>: Sendable {
             logger: self.logger,
             retryPolicy: .otel
         )
+        logger.info("Executed http client")
 
         guard response.status == .ok else {
+            logger.info("Error response")
             // https://opentelemetry.io/docs/specs/otlp/#failures
             // TODO: Apparently failures include Protobuf-encoded GRPC Status -- we could try and include it here.
             throw OTLPHTTPExporterError.requestFailed(response.status)
@@ -273,15 +283,21 @@ extension HTTPClient {
             logger[metadataKey: "attempts"] = "\(retryPolicy.attempts)"
             logger[metadataKey: "max_attempts"] = "\(retryPolicy.maxAttempts)"
         }
-        logger?.debug("Making request.")
+        logger?.info("Making request.")
         var retryPolicy = retryPolicy
-        let response = try await self.execute(request, timeout: timeout, logger: logger)
+        let response: HTTPClientResponse
+        do {
+            response = try await self.execute(request, timeout: timeout, logger: logger)
+        } catch {
+            print("ERRRRORRRR", error)
+            throw error
+        }
         switch retryPolicy.shouldRetry(response: response) {
         case .doNotRetry:
-            logger?.debug("Returning response.", metadata: ["status_code": "\(response.status.code)"])
+            logger?.info("Returning response.", metadata: ["status_code": "\(response.status.code)"])
             return response
         case .retryAfter(let delay):
-            logger?.debug("Retrying request.", metadata: ["status_code": "\(response.status.code)"])
+            logger?.info("Retrying request.", metadata: ["status_code": "\(response.status.code)"])
             try await _Concurrency.Task.sleep(for: delay, clock: clock)
             return try await self.execute(
                 request,

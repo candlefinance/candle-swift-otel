@@ -102,7 +102,7 @@ actor OTelBatchLogRecordProcessor<Exporter: OTelLogRecordExporter, Clock: _Concu
             logger.debug("Skipping force flush: buffer is empty")
             return
         }
-        logger.info("Force flushing.", metadata: ["buffer_size": "\(buffer.count)"])
+        logger.info("Force flushing logs.", metadata: ["buffer_size": "\(buffer.count)"])
         try await withTimeout(configuration.exportTimeout, clock: clock) {
             await withTaskGroup { group in
                 var buffer = self.buffer

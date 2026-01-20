@@ -15,6 +15,7 @@ import AsyncAlgorithms
 import DequeModule
 import Logging
 import ServiceLifecycle
+import Foundation
 
 /// A span processor that batches finished spans and forwards them to a configured exporter.
 ///
@@ -78,36 +79,39 @@ actor OTelBatchSpanProcessor<Exporter: OTelSpanExporter, Clock: _Concurrency.Clo
         await withTaskGroup { taskGroup in
             await withGracefulShutdownHandler {
                 taskGroup.addTask {
-                    self.logger.debug("Consuming from span stream.")
+                    self.logger.info("Consuming from span stream.")
                     for await log in self.spanStream {
                         await self._onSpan(log)
                         self.logger.trace("Consumed span from stream.")
                     }
-                    self.logger.debug("Span stream finished.")
+                    self.logger.info("Span stream finished.")
                 }
                 for await _ in mergedSequence where !(self.buffer.isEmpty) {
                     await self.tick()
                 }
                 await taskGroup.waitForAll()
             } onGracefulShutdown: {
-                self.logger.debug("Shutting down.")
+                self.logger.info("Shutting down.")
                 self.spanContinuation.finish()
                 self.explicitTick.finish()
             }
             try? await self.forceFlush()
             await self.exporter.shutdown()
-            self.logger.debug("Shut down.")
+            self.logger.info("Shut down.")
         }
     }
 
     func forceFlush() async throws {
         guard !buffer.isEmpty else {
-            logger.debug("Skipping force flush: buffer is empty")
+            logger.info("Skipping force flush: buffer is empty")
             return
         }
-        logger.info("Force flushing.", metadata: ["buffer_size": "\(buffer.count)"])
+        logger.info("Force flushing traces.", metadata: ["buffer_size": "\(buffer.count)", "export_timeout": .stringConvertible(configuration.exportTimeout)])
+        print(Thread.callStackSymbols.joined(separator: "\n"))
         try await withTimeout(configuration.exportTimeout, clock: clock) {
+            print("Got past timeout.")
             await withTaskGroup { group in
+                print("In task group.")
                 var buffer = self.buffer
                 while !buffer.isEmpty {
                     let batch = buffer.prefix(self.configuration.maxExportBatchSize)
@@ -144,11 +148,14 @@ actor OTelBatchSpanProcessor<Exporter: OTelSpanExporter, Clock: _Concurrency.Clo
         var logger = logger
         logger[metadataKey: "batch_id"] = "\(batchID)"
         logger[metadataKey: "batch_size"] = "\(batch.count)"
+        
+        logger.info("Batch exporting traces.", metadata: ["buffer_size": "\(buffer.count)", "export_timeout": .stringConvertible(configuration.exportTimeout)])
 
         do {
             try await withTimeout(configuration.exportTimeout, clock: clock) {
+                logger.info("Got past export timeout.")
                 try await self.exporter.export(batch)
-                logger.debug("Exported batch.")
+                logger.info("Exported batch.")
             }
         } catch {
             logger.warning("Failed to export batch.", metadata: [

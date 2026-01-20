@@ -29,6 +29,7 @@ func withTimeout<T: Sendable, Clock: _Concurrency.Clock>(
     isolation: isolated(any Actor)? = #isolation,
     operation: @escaping () async throws -> T
 ) async throws -> T {
+    print("SETTING TIMEOUT", timeout)
     nonisolated(unsafe) let operation = { operation }
     let result: Result<T, any Error> = await withTaskGroup(of: TaskResult<T>.self) { group in
         let operation = operation()

@@ -8,7 +8,7 @@ let sharedSwiftSettings: [SwiftSetting] = [
 ]
 
 let package = Package(
-    name: "candle-swift-otel",
+    name: "swift-otel",
     platforms: PlatformRequirements.clockAPI.supportedPlatforms,
     products: [
         .library(name: "OTel", targets: ["OTel"]),
@@ -53,27 +53,27 @@ let package = Package(
             name: "OTel",
             dependencies: [
                 // API
-                .product(name: "CandleLogging", package: "candle-swift-log"),
-                .product(name: "CandleMetrics", package: "candle-swift-metrics"),
-                .product(name: "CandleTracing", package: "candle-swift-distributed-tracing"),
-                .product(name: "CandleServiceLifecycle", package: "candle-swift-service-lifecycle"),
+                .product(name: "CandleLogging", package: "swift-log"),
+                .product(name: "CandleMetrics", package: "swift-metrics"),
+                .product(name: "CandleTracing", package: "swift-distributed-tracing"),
+                .product(name: "CandleServiceLifecycle", package: "swift-service-lifecycle"),
                 // Core
-                .product(name: "CandleAsyncAlgorithms", package: "candle-swift-async-algorithms"),
-                .product(name: "CandleDequeModule", package: "candle-swift-collections"),
-                .product(name: "CandleNIOConcurrencyHelpers", package: "candle-swift-nio"),
-                .product(name: "CandleAtomics", package: "candle-swift-atomics"),
-                .product(name: "CandleW3CTraceContext", package: "candle-swift-w3c-trace-context"),
+                .product(name: "CandleAsyncAlgorithms", package: "swift-async-algorithms"),
+                .product(name: "CandleDequeModule", package: "swift-collections"),
+                .product(name: "CandleNIOConcurrencyHelpers", package: "swift-nio"),
+                .product(name: "CandleAtomics", package: "swift-atomics"),
+                .product(name: "CandleW3CTraceContext", package: "swift-w3c-trace-context"),
                 /// NOTE: Using `.when(traits: ["A", "B"])` is supposed to work as an OR, but is currently broken.
                 ///       so we "splat" it into two conditional dependencies. This produces a build warning about a
                 ///       duplicate dependency when both traits are enabled (which is the default, too), but it's the
                 ///       best we can do until the SwiftPM issue is addressed.
                 // Depend on this if either trait is enabled.
-                // .product(name: "SwiftProtobuf", package: "candle-swift-protobuf", condition: .when(traits: ["OTLPHTTP", "OTLPGRPC"])),
-                .product(name: "SwiftProtobuf", package: "candle-swift-protobuf", condition: .when(traits: ["OTLPHTTP"])),
-                .product(name: "SwiftProtobuf", package: "candle-swift-protobuf", condition: .when(traits: ["OTLPGRPC"])),
+                // .product(name: "SwiftProtobuf", package: "swift-protobuf", condition: .when(traits: ["OTLPHTTP", "OTLPGRPC"])),
+                .product(name: "SwiftProtobuf", package: "swift-protobuf", condition: .when(traits: ["OTLPHTTP"])),
+                .product(name: "SwiftProtobuf", package: "swift-protobuf", condition: .when(traits: ["OTLPGRPC"])),
                 // OTLP/HTTP exporter -- only when OTLPHTTP trait is enabled.
-                .product(name: "CandleAsyncHTTPClient", package: "candle-async-http-client", condition: .when(traits: ["OTLPHTTP"])),
-                .product(name: "CandleNIOSSL", package: "candle-swift-nio-ssl", condition: .when(traits: ["OTLPHTTP"])),
+                .product(name: "CandleAsyncHTTPClient", package: "async-http-client", condition: .when(traits: ["OTLPHTTP"])),
+                .product(name: "CandleNIOSSL", package: "swift-nio-ssl", condition: .when(traits: ["OTLPHTTP"])),
             ],
             swiftSettings: sharedSwiftSettings
         ),

@@ -69,8 +69,8 @@ let package = Package(
                 ///       best we can do until the SwiftPM issue is addressed.
                 // Depend on this if either trait is enabled.
                 // .product(name: "SwiftProtobuf",package: "candle-swift-protobuf", condition: .when(traits: ["OTLPHTTP", "OTLPGRPC"])),
-                .product(name: "SwiftProtobuf",package: "candle-swift-protobuf", condition: .when(traits: ["OTLPHTTP"])),
-                .product(name: "SwiftProtobuf",package: "candle-swift-protobuf", condition: .when(traits: ["OTLPGRPC"])),
+                .product(name: "CandleSwiftProtobuf",package: "candle-swift-protobuf", condition: .when(traits: ["OTLPHTTP"])),
+                .product(name: "CandleSwiftProtobuf",package: "candle-swift-protobuf", condition: .when(traits: ["OTLPGRPC"])),
                 // OTLP/HTTP exporter -- only when OTLPHTTP trait is enabled.
                 .product(name: "CandleAsyncHTTPClient",package: "candle-async-http-client", condition: .when(traits: ["OTLPHTTP"])),
                 .product(name: "CandleNIOSSL",package: "candle-swift-nio-ssl", condition: .when(traits: ["OTLPHTTP"])),

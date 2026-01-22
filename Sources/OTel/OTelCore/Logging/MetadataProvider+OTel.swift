@@ -11,8 +11,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Logging
-private import ServiceContextModule
+import CandleLogging
+private import CandleServiceContextModule
 
 extension Logger.MetadataProvider {
     /// A metadata provider exposing the current trace and span ID.

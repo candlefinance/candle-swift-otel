@@ -11,8 +11,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Tracing
-import W3CTraceContext
+import CandleTracing
+import CandleW3CTraceContext
 
 /// A sampler that always takes the same sampling decision.
 struct OTelConstantSampler: OTelSampler {

@@ -11,6 +11,6 @@
 //
 //===----------------------------------------------------------------------===//
 
-import CoreMetrics
+import CandleCoreMetrics
 
-extension FloatingPointCounter: CoreMetrics.FloatingPointCounterHandler {}
+extension FloatingPointCounter: CandleCoreMetrics.FloatingPointCounterHandler {}

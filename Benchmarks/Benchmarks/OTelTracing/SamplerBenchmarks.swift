@@ -13,7 +13,7 @@
 
 import Benchmark
 @_spi(OTelBenchmarking) import OTel
-import W3CTraceContext
+import CandleW3CTraceContext
 
 func samplerBenchmarks() {
     Benchmark("Trace-id ratio based sampling result") { benchmark in

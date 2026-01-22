@@ -11,7 +11,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-import ServiceContextModule
+import CandleServiceContextModule
 
 extension ServiceContext {
     static func withSpanContext(_ spanContext: OTelSpanContext) -> Self {

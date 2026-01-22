@@ -11,8 +11,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-public import ServiceContextModule
-import W3CTraceContext
+public import CandleServiceContextModule
+import CandleW3CTraceContext
 
 public extension ServiceContext {
     /// The span context.

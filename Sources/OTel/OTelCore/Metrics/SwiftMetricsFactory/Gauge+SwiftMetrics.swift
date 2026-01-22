@@ -11,9 +11,9 @@
 //
 //===----------------------------------------------------------------------===//
 
-import CoreMetrics
+import CandleCoreMetrics
 
-extension Gauge: CoreMetrics.RecorderHandler {
+extension Gauge: CandleCoreMetrics.RecorderHandler {
     func record(_ value: Int64) {
         record(Double(value))
     }
@@ -23,7 +23,7 @@ extension Gauge: CoreMetrics.RecorderHandler {
     }
 }
 
-extension Gauge: CoreMetrics.MeterHandler {
+extension Gauge: CandleCoreMetrics.MeterHandler {
     func set(_ value: Double) {
         set(to: value)
     }

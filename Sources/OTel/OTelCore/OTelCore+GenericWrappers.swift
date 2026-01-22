@@ -11,9 +11,9 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Logging
-import Tracing
-import W3CTraceContext
+import CandleLogging
+import CandleTracing
+import CandleW3CTraceContext
 
 /// The wrapper types in this file exist to support our simplified public API surface.
 ///

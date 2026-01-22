@@ -11,11 +11,11 @@
 //
 //===----------------------------------------------------------------------===//
 
-import AsyncAlgorithms
-import Logging
-import NIOConcurrencyHelpers
-import ServiceLifecycle
-import Tracing
+import CandleAsyncAlgorithms
+import CandleLogging
+import CandleNIOConcurrencyHelpers
+import CandleServiceLifecycle
+import CandleTracing
 
 struct OTelLogHandler: Sendable, LogHandler {
     var metadata: Logger.Metadata

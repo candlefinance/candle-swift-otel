@@ -11,7 +11,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Tracing
+import CandleTracing
 
 /// A set of attributes describing the entity being instrumented.
 ///

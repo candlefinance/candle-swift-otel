@@ -11,18 +11,18 @@
 //
 //===----------------------------------------------------------------------===//
 
-import CoreMetrics
+import CandleCoreMetrics
 
 extension Histogram: _SwiftMetricsSendableProtocol {}
 
-extension Histogram: CoreMetrics.TimerHandler where Value == Duration {
+extension Histogram: CandleCoreMetrics.TimerHandler where Value == Duration {
     func recordNanoseconds(_ duration: Int64) {
         let value = Duration.nanoseconds(duration)
         record(value)
     }
 }
 
-extension Histogram: CoreMetrics.RecorderHandler where Value == Double {
+extension Histogram: CandleCoreMetrics.RecorderHandler where Value == Double {
     func record(_ value: Int64) {
         record(Double(value))
     }

@@ -11,7 +11,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-import W3CTraceContext
+import CandleW3CTraceContext
 
 /// An ID generator generates random trace and span IDs on demand.
 ///

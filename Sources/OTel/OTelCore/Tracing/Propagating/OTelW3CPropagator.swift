@@ -11,8 +11,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Instrumentation
-import W3CTraceContext
+import CandleInstrumentation
+import CandleW3CTraceContext
 
 /// A propagator which operates on HTTP headers using the [W3C TraceContext](https://www.w3.org/TR/2020/REC-trace-context-1-20200206/).
 struct OTelW3CPropagator: OTelPropagator {

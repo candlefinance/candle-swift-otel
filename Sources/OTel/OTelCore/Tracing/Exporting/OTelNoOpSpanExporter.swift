@@ -11,7 +11,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-import ServiceLifecycle
+import CandleServiceLifecycle
 
 /// A span exporter that ignores all operations, used when no spans should be exported.
 struct OTelNoOpSpanExporter: OTelSpanExporter {

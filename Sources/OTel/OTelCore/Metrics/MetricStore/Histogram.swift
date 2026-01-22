@@ -24,7 +24,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-import NIOConcurrencyHelpers
+import CandleNIOConcurrencyHelpers
 
 /// A type that can be used in a ``Histogram`` to create bucket boundaries.
 protocol Bucketable: AdditiveArithmetic, Comparable, Sendable {

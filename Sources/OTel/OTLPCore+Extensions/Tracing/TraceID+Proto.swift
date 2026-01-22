@@ -19,7 +19,7 @@ import struct FoundationEssentials.Data
 #else
 import struct Foundation.Data
 #endif
-import W3CTraceContext
+import CandleW3CTraceContext
 
 extension TraceID {
     var data: Data {

@@ -11,8 +11,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Logging
-import Tracing
+import CandleLogging
+import CandleTracing
 
 /// A type facilitating the resource detection process using a configurable set of resource detectors.
 struct OTelResourceDetection<Clock: _Concurrency.Clock>: Sendable where Clock.Duration == Duration {

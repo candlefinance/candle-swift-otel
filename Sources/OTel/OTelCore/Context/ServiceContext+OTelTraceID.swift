@@ -11,7 +11,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-public import ServiceContextModule
+public import CandleServiceContextModule
 
 extension ServiceContext {
     /// A hex string representation of this service context's trace ID.

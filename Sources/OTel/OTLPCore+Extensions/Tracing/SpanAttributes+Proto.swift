@@ -14,7 +14,7 @@
 #if !(OTLPHTTP || OTLPGRPC)
 // Empty when above trait(s) are disabled.
 #else
-import Tracing
+import CandleTracing
 
 extension [Opentelemetry_Proto_Common_V1_KeyValue] {
     /// Create an array of key-value pairs from span attributes.

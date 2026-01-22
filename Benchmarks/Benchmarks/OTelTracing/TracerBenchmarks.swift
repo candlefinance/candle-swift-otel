@@ -13,8 +13,8 @@
 
 import Benchmark
 @_spi(OTelBenchmarking) import OTel
-import ServiceContextModule
-import W3CTraceContext
+import CandleServiceContextModule
+import CandleW3CTraceContext
 
 func tracerBenchmarks() {
     Benchmark("Starting sampled root spans") { benchmark in

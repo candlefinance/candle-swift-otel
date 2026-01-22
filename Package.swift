@@ -53,16 +53,16 @@ let package = Package(
             name: "OTel",
             dependencies: [
                 // API
-                .product(name: "Logging", package: "swift-log"),
-                .product(name: "Metrics", package: "swift-metrics"),
-                .product(name: "Tracing", package: "swift-distributed-tracing"),
-                .product(name: "ServiceLifecycle", package: "swift-service-lifecycle"),
+                .product(name: "CandleLogging", package: "swift-log"),
+                .product(name: "CandleMetrics", package: "swift-metrics"),
+                .product(name: "CandleTracing", package: "swift-distributed-tracing"),
+                .product(name: "CandleServiceLifecycle", package: "swift-service-lifecycle"),
                 // Core
-                .product(name: "AsyncAlgorithms", package: "swift-async-algorithms"),
-                .product(name: "DequeModule", package: "swift-collections"),
-                .product(name: "NIOConcurrencyHelpers", package: "swift-nio"),
-                .product(name: "Atomics", package: "swift-atomics"),
-                .product(name: "W3CTraceContext", package: "swift-w3c-trace-context"),
+                .product(name: "CandleAsyncAlgorithms", package: "swift-async-algorithms"),
+                .product(name: "CandleDequeModule", package: "swift-collections"),
+                .product(name: "CandleNIOConcurrencyHelpers", package: "swift-nio"),
+                .product(name: "CandleAtomics", package: "swift-atomics"),
+                .product(name: "CandleW3CTraceContext", package: "swift-w3c-trace-context"),
                 /// NOTE: Using `.when(traits: ["A", "B"])` is supposed to work as an OR, but is currently broken.
                 ///       so we "splat" it into two conditional dependencies. This produces a build warning about a
                 ///       duplicate dependency when both traits are enabled (which is the default, too), but it's the
@@ -72,8 +72,8 @@ let package = Package(
                 .product(name: "SwiftProtobuf", package: "swift-protobuf", condition: .when(traits: ["OTLPHTTP"])),
                 .product(name: "SwiftProtobuf", package: "swift-protobuf", condition: .when(traits: ["OTLPGRPC"])),
                 // OTLP/HTTP exporter -- only when OTLPHTTP trait is enabled.
-                .product(name: "AsyncHTTPClient", package: "async-http-client", condition: .when(traits: ["OTLPHTTP"])),
-                .product(name: "NIOSSL", package: "swift-nio-ssl", condition: .when(traits: ["OTLPHTTP"])),
+                .product(name: "CandleAsyncHTTPClient", package: "async-http-client", condition: .when(traits: ["OTLPHTTP"])),
+                .product(name: "CandleNIOSSL", package: "swift-nio-ssl", condition: .when(traits: ["OTLPHTTP"])),
             ],
             swiftSettings: sharedSwiftSettings
         ),

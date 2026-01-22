@@ -11,8 +11,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Tracing
-import W3CTraceContext
+import CandleTracing
+import CandleW3CTraceContext
 
 /// An `OTelSampler` based on a given `TraceID` and `ratio`.
 ///

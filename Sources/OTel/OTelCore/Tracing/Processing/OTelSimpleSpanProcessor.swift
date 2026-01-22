@@ -11,9 +11,9 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Logging
-import ServiceContextModule
-import ServiceLifecycle
+import CandleLogging
+import CandleServiceContextModule
+import CandleServiceLifecycle
 
 /// A span processor that simply forwards finished spans to a configured exporter, one at a time as soon as their ended.
 ///

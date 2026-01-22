@@ -11,8 +11,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Tracing
-import W3CTraceContext
+import CandleTracing
+import CandleW3CTraceContext
 
 /// Decides whether a given span should be sampled.
 protocol OTelSampler: Sendable {

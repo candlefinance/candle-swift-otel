@@ -16,7 +16,7 @@ import struct FoundationEssentials.Date
 #else
 import struct Foundation.Date
 #endif
-import ServiceLifecycle
+import CandleServiceLifecycle
 
 struct OTelConsoleLogRecordExporter: OTelLogRecordExporter {
     func run() async throws {

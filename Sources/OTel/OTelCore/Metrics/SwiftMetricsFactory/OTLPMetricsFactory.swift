@@ -24,8 +24,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-import CoreMetrics
-import Logging
+import CandleCoreMetrics
+import CandleLogging
 
 /// A Swift Metrics `MetricsFactory` implementation backed by ``OTelMetricRegistry``.
 struct OTLPMetricsFactory: Sendable {
@@ -157,8 +157,8 @@ extension OTLPMetricsFactory {
     }
 }
 
-extension OTLPMetricsFactory: CoreMetrics.MetricsFactory {
-    func makeCounter(label: String, dimensions: [(String, String)]) -> CoreMetrics.CounterHandler {
+extension OTLPMetricsFactory: CandleCoreMetrics.MetricsFactory {
+    func makeCounter(label: String, dimensions: [(String, String)]) -> CandleCoreMetrics.CounterHandler {
         guard let (label, dimensions) = configuration.registrationPreprocessor(label, dimensions) else {
             return NOOPMetricsHandler.instance.makeCounter(label: label, dimensions: dimensions)
         }
@@ -166,7 +166,7 @@ extension OTLPMetricsFactory: CoreMetrics.MetricsFactory {
         return registry.makeCounter(name: label, unit: unit, description: description, attributes: attributes)
     }
 
-    func makeFloatingPointCounter(label: String, dimensions: [(String, String)]) -> CoreMetrics.FloatingPointCounterHandler {
+    func makeFloatingPointCounter(label: String, dimensions: [(String, String)]) -> CandleCoreMetrics.FloatingPointCounterHandler {
         guard let (label, dimensions) = configuration.registrationPreprocessor(label, dimensions) else {
             return NOOPMetricsHandler.instance.makeFloatingPointCounter(label: label, dimensions: dimensions)
         }
@@ -178,7 +178,7 @@ extension OTLPMetricsFactory: CoreMetrics.MetricsFactory {
         label: String,
         dimensions: [(String, String)],
         aggregate: Bool
-    ) -> CoreMetrics.RecorderHandler {
+    ) -> CandleCoreMetrics.RecorderHandler {
         guard let (label, dimensions) = configuration.registrationPreprocessor(label, dimensions) else {
             return NOOPMetricsHandler.instance.makeRecorder(label: label, dimensions: dimensions, aggregate: aggregate)
         }
@@ -190,7 +190,7 @@ extension OTLPMetricsFactory: CoreMetrics.MetricsFactory {
         return registry.makeValueHistogram(name: label, unit: unit, description: description, attributes: attributes, buckets: buckets)
     }
 
-    func makeMeter(label: String, dimensions: [(String, String)]) -> CoreMetrics.MeterHandler {
+    func makeMeter(label: String, dimensions: [(String, String)]) -> CandleCoreMetrics.MeterHandler {
         guard let (label, dimensions) = configuration.registrationPreprocessor(label, dimensions) else {
             return NOOPMetricsHandler.instance.makeMeter(label: label, dimensions: dimensions)
         }
@@ -198,7 +198,7 @@ extension OTLPMetricsFactory: CoreMetrics.MetricsFactory {
         return registry.makeGauge(name: label, unit: unit, description: description, attributes: attributes)
     }
 
-    func makeTimer(label: String, dimensions: [(String, String)]) -> CoreMetrics.TimerHandler {
+    func makeTimer(label: String, dimensions: [(String, String)]) -> CandleCoreMetrics.TimerHandler {
         guard let (label, dimensions) = configuration.registrationPreprocessor(label, dimensions) else {
             return NOOPMetricsHandler.instance.makeTimer(label: label, dimensions: dimensions)
         }
@@ -207,7 +207,7 @@ extension OTLPMetricsFactory: CoreMetrics.MetricsFactory {
         return registry.makeDurationHistogram(name: label, unit: unit, description: description, attributes: attributes, buckets: buckets)
     }
 
-    func destroyCounter(_ handler: CoreMetrics.CounterHandler) {
+    func destroyCounter(_ handler: CandleCoreMetrics.CounterHandler) {
         guard let counter = handler as? Counter else {
             return
         }
@@ -221,7 +221,7 @@ extension OTLPMetricsFactory: CoreMetrics.MetricsFactory {
         registry.unregisterFloatingPointCounter(counter)
     }
 
-    func destroyRecorder(_ handler: CoreMetrics.RecorderHandler) {
+    func destroyRecorder(_ handler: CandleCoreMetrics.RecorderHandler) {
         switch handler {
         case let gauge as Gauge:
             registry.unregisterGauge(gauge)
@@ -232,14 +232,14 @@ extension OTLPMetricsFactory: CoreMetrics.MetricsFactory {
         }
     }
 
-    func destroyMeter(_ handler: CoreMetrics.MeterHandler) {
+    func destroyMeter(_ handler: CandleCoreMetrics.MeterHandler) {
         guard let gauge = handler as? Gauge else {
             return
         }
         registry.unregisterGauge(gauge)
     }
 
-    func destroyTimer(_ handler: CoreMetrics.TimerHandler) {
+    func destroyTimer(_ handler: CandleCoreMetrics.TimerHandler) {
         guard let histogram = handler as? Histogram<Duration> else {
             return
         }

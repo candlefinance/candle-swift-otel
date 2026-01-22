@@ -11,8 +11,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-import NIOConcurrencyHelpers
-import Tracing
+import CandleNIOConcurrencyHelpers
+import CandleTracing
 
 /// A distributed tracing span, conforming to the [OpenTelemetry specification](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/api.md#span).
 final class OTelSpan: Span {
@@ -122,7 +122,7 @@ final class OTelSpan: Span {
         }
     }
 
-    func addEvent(_ event: Tracing.SpanEvent) {
+    func addEvent(_ event: CandleTracing.SpanEvent) {
         switch underlying {
         case .noOp:
             break

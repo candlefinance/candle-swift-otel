@@ -11,11 +11,11 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Logging
-import NIOConcurrencyHelpers
-import ServiceLifecycle
-import Tracing
-import W3CTraceContext
+import CandleLogging
+import CandleNIOConcurrencyHelpers
+import CandleServiceLifecycle
+import CandleTracing
+import CandleW3CTraceContext
 
 /// An OpenTelemetry tracer implementing the Swift Distributed Tracing `Tracer` protocol.
 ///

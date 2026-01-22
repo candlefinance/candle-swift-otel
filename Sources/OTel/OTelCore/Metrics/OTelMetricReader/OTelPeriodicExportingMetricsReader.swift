@@ -11,9 +11,9 @@
 //
 //===----------------------------------------------------------------------===//
 
-import AsyncAlgorithms
-import Logging
-import ServiceLifecycle
+import CandleAsyncAlgorithms
+import CandleLogging
+import CandleServiceLifecycle
 
 struct OTelPeriodicExportingMetricsReader<Clock: _Concurrency.Clock> where Clock.Duration == Duration {
     private let logger: Logger

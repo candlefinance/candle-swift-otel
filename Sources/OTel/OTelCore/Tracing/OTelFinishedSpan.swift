@@ -11,7 +11,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Tracing
+import CandleTracing
 
 /// A read-only representation of an ended ``OTelSpan``.
 struct OTelFinishedSpan: Sendable {

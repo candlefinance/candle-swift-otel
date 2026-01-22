@@ -11,8 +11,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Tracing
-import W3CTraceContext
+import CandleTracing
+import CandleW3CTraceContext
 
 /// A sampler relaying a sampling decision to any of the configured samplers,
 /// based on whether a given span has a remote and/or sampled parent.

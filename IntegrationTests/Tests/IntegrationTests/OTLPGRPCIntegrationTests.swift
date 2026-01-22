@@ -12,13 +12,13 @@
 //===----------------------------------------------------------------------===//
 
 import Foundation
-@testable import Instrumentation
-@testable import Logging
-import NIO
+@testable import CandleInstrumentation
+@testable import CandleLogging
+import CandleNIO
 import OTel
 import OTLPGRPC
-import ServiceLifecycle
-import W3CTraceContext
+import CandleServiceLifecycle
+import CandleW3CTraceContext
 import XCTest
 
 final class OTLPGRPCIntegrationTests: XCTestCase, @unchecked Sendable {

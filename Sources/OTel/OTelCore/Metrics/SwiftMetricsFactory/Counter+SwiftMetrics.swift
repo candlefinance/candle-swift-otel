@@ -11,6 +11,6 @@
 //
 //===----------------------------------------------------------------------===//
 
-import CoreMetrics
+import CandleCoreMetrics
 
-extension Counter: CoreMetrics.CounterHandler {}
+extension Counter: CandleCoreMetrics.CounterHandler {}

@@ -11,7 +11,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Logging
+import CandleLogging
 
 struct OTelLogRecord: Equatable, Sendable {
     var body: Logger.Message

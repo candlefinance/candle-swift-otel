@@ -11,8 +11,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Logging
-import Tracing
+import CandleLogging
+import CandleTracing
 
 extension OTelResource {
     init(configuration: OTel.Configuration) {
@@ -31,7 +31,7 @@ extension OTelResource {
     }
 }
 
-extension Logging.Logger.Level {
+extension CandleLogging.Logger.Level {
     init(_ level: OTel.Configuration.LogLevel) {
         switch level.backing {
         case .error: self = .error

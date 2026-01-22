@@ -11,7 +11,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Instrumentation
+import CandleInstrumentation
 
 /// A propagator carries span context over asynchronous boundaries such as HTTP calls.
 protocol OTelPropagator: Sendable {

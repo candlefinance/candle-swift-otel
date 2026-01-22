@@ -16,8 +16,8 @@ import class FoundationEssentials.ProcessInfo
 #else
 import class Foundation.ProcessInfo
 #endif
-import Logging
-import Tracing
+import CandleLogging
+import CandleTracing
 
 /// A resource detector retrieving process-related attributes.
 struct OTelProcessResourceDetector: OTelResourceDetector, CustomStringConvertible {

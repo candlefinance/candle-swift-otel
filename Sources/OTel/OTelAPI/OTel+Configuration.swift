@@ -11,7 +11,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-public import Logging
+public import CandleLogging
 
 extension OTel {
     /// Configuration that controls telemetry collection and export behavior.

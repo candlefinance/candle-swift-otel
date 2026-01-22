@@ -11,7 +11,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Logging
+import CandleLogging
 
 @_documentation(visibility: private)
 struct OTelManualResourceDetector: OTelResourceDetector, CustomStringConvertible {

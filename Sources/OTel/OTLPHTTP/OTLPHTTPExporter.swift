@@ -14,11 +14,11 @@
 #if !OTLPHTTP
 // Empty when above trait(s) are disabled.
 #else
-import AsyncHTTPClient
-import Logging
-import NIOHTTP1
-import NIOSSL
-import ServiceLifecycle
+import CandleAsyncHTTPClient
+import CandleLogging
+import CandleNIOHTTP1
+import CandleNIOSSL
+import CandleServiceLifecycle
 import CandleSwiftProtobuf
 
 #if canImport(FoundationEssentials)
@@ -28,8 +28,8 @@ import struct FoundationEssentials.URL
 import class Foundation.FileManager
 import struct Foundation.URL
 #endif
-package import struct NIOCore.ByteBuffer
-package import struct NIOCore.TimeAmount
+package import struct CandleNIOCore.ByteBuffer
+package import struct CandleNIOCore.TimeAmount
 
 final class OTLPHTTPExporter<Request: Message, Response: Message>: Sendable {
     private let logger: Logger

@@ -16,10 +16,10 @@ import class FoundationEssentials.ProcessInfo
 #else
 import class Foundation.ProcessInfo
 #endif
-import Logging
-import Metrics
-public import ServiceLifecycle
-import Tracing
+import CandleLogging
+import CandleMetrics
+public import CandleServiceLifecycle
+import CandleTracing
 
 // MARK: - API
 

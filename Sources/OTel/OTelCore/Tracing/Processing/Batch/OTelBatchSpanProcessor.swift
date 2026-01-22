@@ -11,10 +11,10 @@
 //
 //===----------------------------------------------------------------------===//
 
-import AsyncAlgorithms
-import DequeModule
-import Logging
-import ServiceLifecycle
+import CandleAsyncAlgorithms
+import CandleDequeModule
+import CandleLogging
+import CandleServiceLifecycle
 
 /// A span processor that batches finished spans and forwards them to a configured exporter.
 ///

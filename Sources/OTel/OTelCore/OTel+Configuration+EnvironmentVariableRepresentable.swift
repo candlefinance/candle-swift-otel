@@ -11,7 +11,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Logging
+import CandleLogging
 
 protocol OTelEnvironmentVariableRepresentable {
     init?(environmentVariableValue: String)

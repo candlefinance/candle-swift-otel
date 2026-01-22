@@ -14,7 +14,7 @@
 #if !(OTLPHTTP || OTLPGRPC)
 // Empty when above trait(s) are disabled.
 #else
-import Logging
+import CandleLogging
 
 extension Opentelemetry_Proto_Logs_V1_LogRecord {
     init(_ logRecord: OTelLogRecord) {

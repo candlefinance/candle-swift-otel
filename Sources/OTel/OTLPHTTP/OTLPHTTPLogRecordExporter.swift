@@ -14,7 +14,7 @@
 #if !OTLPHTTP
 // Empty when above trait(s) are disabled.
 #else
-import Logging
+import CandleLogging
 
 final class OTLPHTTPLogRecordExporter: OTelLogRecordExporter {
     typealias Request = Opentelemetry_Proto_Collector_Logs_V1_ExportLogsServiceRequest

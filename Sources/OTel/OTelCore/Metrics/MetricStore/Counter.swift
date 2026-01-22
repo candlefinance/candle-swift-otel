@@ -24,7 +24,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Atomics
+import CandleAtomics
 
 /// A counter is a cumulative metric that represents a single monotonically increasing
 /// counter whose value can only increase or be ``reset()`` to zero on restart.

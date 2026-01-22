@@ -11,8 +11,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Logging
-import struct NIOConcurrencyHelpers.NIOLockedValueBox
+import CandleLogging
+import struct CandleNIOConcurrencyHelpers.NIOLockedValueBox
 
 /// A registry for metric instruments.
 ///

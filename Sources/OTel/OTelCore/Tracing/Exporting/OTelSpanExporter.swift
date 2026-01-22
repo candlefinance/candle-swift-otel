@@ -11,7 +11,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-import ServiceLifecycle
+import CandleServiceLifecycle
 
 /// A span exporter receives batches of processed spans to export them, e.g. by sending them over the network.
 ///

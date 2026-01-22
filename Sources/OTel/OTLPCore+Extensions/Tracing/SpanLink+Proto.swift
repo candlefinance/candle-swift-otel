@@ -19,7 +19,7 @@ import struct FoundationEssentials.Data
 #else
 import struct Foundation.Data
 #endif
-import Tracing
+import CandleTracing
 
 extension Opentelemetry_Proto_Trace_V1_Span.Link {
     /// Create a span link from a `SpanLink`.

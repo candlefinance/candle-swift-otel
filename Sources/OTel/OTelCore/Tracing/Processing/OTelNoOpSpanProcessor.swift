@@ -11,8 +11,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-import ServiceContextModule
-import ServiceLifecycle
+import CandleServiceContextModule
+import CandleServiceLifecycle
 
 /// A span processor that ignores all operations, used when no spans should be processed.
 struct OTelNoOpSpanProcessor: OTelSpanProcessor, CustomStringConvertible {

@@ -19,8 +19,8 @@ import struct FoundationEssentials.Data
 #else
 import struct Foundation.Data
 #endif
-import Tracing
-import W3CTraceContext
+import CandleTracing
+import CandleW3CTraceContext
 
 extension Opentelemetry_Proto_Trace_V1_Span {
     /// Create a span from an `OTelFinishedSpan`.

@@ -11,7 +11,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-import ServiceLifecycle
+import CandleServiceLifecycle
 
 /// Exports a batch of metrics.
 ///

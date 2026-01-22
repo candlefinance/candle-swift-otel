@@ -11,8 +11,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Logging
-import Tracing
+import CandleLogging
+import CandleTracing
 
 /// A resource detector parsing resource attributes from the `OTEL_RESOURCE_ATTRIBUTES` environment variable.
 struct OTelEnvironmentResourceDetector: OTelResourceDetector, CustomStringConvertible {

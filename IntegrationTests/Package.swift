@@ -13,7 +13,7 @@ let package = Package(
             dependencies: [
                 .product(name: "OTel", package: "swift-otel"),
                 .product(name: "OTLPGRPC", package: "swift-otel"),
-                .product(name: "ServiceLifecycle", package: "swift-service-lifecycle"),
+                .product(name: "CandleServiceLifecycle", package: "swift-service-lifecycle"),
             ],
             swiftSettings: [.enableExperimentalFeature("StrictConcurrency=complete")]
         ),

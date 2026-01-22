@@ -10,7 +10,7 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 //===----------------------------------------------------------------------===//
-import Logging
+import CandleLogging
 
 extension OTel.Configuration {
     mutating func applyEnvironmentOverrides(environment: [String: String], logger: Logger) {

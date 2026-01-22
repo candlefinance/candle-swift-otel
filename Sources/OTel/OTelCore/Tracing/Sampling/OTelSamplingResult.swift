@@ -11,7 +11,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Tracing
+import CandleTracing
 
 /// The result returned by ``OTelSampler``s.
 struct OTelSamplingResult: Equatable, Sendable {

@@ -11,8 +11,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-import ServiceContextModule
-import ServiceLifecycle
+import CandleServiceContextModule
+import CandleServiceLifecycle
 
 /// A pseudo-``OTelSpanProcessor`` that may be used to process using multiple other ``OTelSpanProcessor``s.
 actor OTelMultiplexSpanProcessor: OTelSpanProcessor {

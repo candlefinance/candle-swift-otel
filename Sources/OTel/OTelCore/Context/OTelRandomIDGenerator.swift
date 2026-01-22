@@ -11,8 +11,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-import NIOConcurrencyHelpers
-import W3CTraceContext
+import CandleNIOConcurrencyHelpers
+import CandleW3CTraceContext
 
 /// The default ID generator,
 /// based on a [`RandomNumberGenerator`](https://developer.apple.com/documentation/swift/randomnumbergenerator).

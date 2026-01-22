@@ -11,7 +11,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-import ServiceLifecycle
+import CandleServiceLifecycle
 
 /// A metric exporter that logs metrics to the console for debugging.
 struct OTelConsoleMetricExporter: OTelMetricExporter {

@@ -11,8 +11,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-import ServiceContextModule
-import ServiceLifecycle
+import CandleServiceContextModule
+import CandleServiceLifecycle
 
 /// A pseudo-``OTelLogRecordProcessor`` that may be used to process using multiple other ``OTelLogRecordProcessor``s.
 actor OTelMultiplexLogRecordProcessor: OTelLogRecordProcessor {

@@ -14,7 +14,7 @@
 #if !(OTLPHTTP || OTLPGRPC)
 // Empty when above trait(s) are disabled.
 #else
-import Tracing
+import CandleTracing
 
 extension Opentelemetry_Proto_Trace_V1_Status {
     /// Create a status by casting a `SpanStatus`.

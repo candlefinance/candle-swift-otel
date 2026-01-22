@@ -10,7 +10,7 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 //===----------------------------------------------------------------------===//
-import Tracing
+import CandleTracing
 
 extension Histogram: OTelMetricInstrument {
     /// Return the current state as an OTel metric data point.

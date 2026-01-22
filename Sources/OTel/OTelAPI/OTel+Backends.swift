@@ -16,10 +16,10 @@ import class FoundationEssentials.ProcessInfo
 #else
 import class Foundation.ProcessInfo
 #endif
-public import CoreMetrics
-public import Logging
-public import ServiceLifecycle
-public import Tracing
+public import CandleCoreMetrics
+public import CandleLogging
+public import CandleServiceLifecycle
+public import CandleTracing
 
 extension OTel {
     /// Create a logging backend with an OTLP exporter.

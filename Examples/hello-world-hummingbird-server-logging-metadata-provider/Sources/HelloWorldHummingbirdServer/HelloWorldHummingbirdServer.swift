@@ -12,7 +12,7 @@
 //===----------------------------------------------------------------------===//
 
 import Hummingbird
-import Logging
+import CandleLogging
 import OTel
 
 @main

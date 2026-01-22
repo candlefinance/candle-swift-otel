@@ -19,16 +19,16 @@ let package = Package(
         .default(enabledTraits: ["OTLPHTTP", "OTLPGRPC"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-distributed-tracing.git", from: "1.2.0"),
-        .package(url: "https://github.com/apple/swift-log.git", from: "1.5.0"),
-        .package(url: "https://github.com/apple/swift-collections.git", from: "1.0.0"),
-        .package(url: "https://github.com/apple/swift-async-algorithms.git", from: "1.0.0"),
-        .package(url: "https://github.com/swift-server/swift-service-lifecycle.git", from: "2.4.1"),
-        .package(url: "https://github.com/apple/swift-nio.git", from: "2.0.0"),
-        .package(url: "https://github.com/apple/swift-nio-ssl.git", from: "2.0.0"),
-        .package(url: "https://github.com/apple/swift-atomics.git", from: "1.0.2"),
-        .package(url: "https://github.com/apple/swift-metrics.git", from: "2.4.1"),
-        .package(url: "https://github.com/swift-otel/swift-w3c-trace-context.git", exact: "1.0.0-beta.3"),
+        .package(url: "https://github.com/candlefinance/swift-distributed-tracing.git", branch: "fix-candle-1.2.2"),
+        .package(url: "https://github.com/candlefinance/swift-log.git", branch: "fix-candle-1.6.3"),
+        .package(url: "https://github.com/candlefinance/swift-collections.git", branch: "fix-candle-1.1.4"),
+        .package(url: "https://github.com/candlefinance/swift-async-algorithms.git", branch: "fix-candle-1.0.4"),
+        .package(url: "https://github.com/candlefinance/swift-service-lifecycle.git", branch: "fix-candle-2.8.0"),
+        .package(url: "https://github.com/candlefinance/swift-nio.git", branch: "fix-candle-2.82.1"),
+        .package(url: "https://github.com/candlefinance/swift-nio-ssl.git", branch: "fix-candle-2.33.0"),
+        .package(url: "https://github.com/candlefinance/swift-atomics.git", branch: "fix-candle-1.2.0"),
+        .package(url: "https://github.com/candlefinance/swift-metrics.git", branch: "fix-candle-2.7.1"),
+        .package(url: "https://github.com/candlefinance/swift-w3c-trace-context.git", branch: "fix-candle-1.0.0-beta.3"),
 
         // MARK: - OTLPCore
 
@@ -42,7 +42,7 @@ let package = Package(
 
         // MARK: - OTLPHTTP
 
-        .package(url: "https://github.com/swift-server/async-http-client.git", from: "1.25.0"),
+        .package(url: "https://github.com/candlefinance/async-http-client.git", branch: "fix-candle-1.27.0"),
 
         // MARK: - Plugins
 

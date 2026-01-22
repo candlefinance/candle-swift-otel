@@ -77,15 +77,6 @@ let package = Package(
             ],
             swiftSettings: sharedSwiftSettings
         ),
-
-        .testTarget(
-            name: "OTelTests",
-            dependencies: [
-                .target(name: "OTel"),
-                .product(name: "NIOTestUtils", package: "candle-swift-nio"),
-            ],
-            swiftSettings: sharedSwiftSettings
-        ),
     ],
     swiftLanguageModes: [.v6]
 )

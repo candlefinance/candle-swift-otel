@@ -19,20 +19,20 @@ let package = Package(
         .default(enabledTraits: ["OTLPHTTP", "OTLPGRPC"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/candlefinance/swift-distributed-tracing.git", branch: "fix-candle-1.2.2"),
-        .package(url: "https://github.com/candlefinance/swift-log.git", branch: "fix-candle-1.6.3"),
-        .package(url: "https://github.com/candlefinance/swift-collections.git", branch: "fix-candle-1.1.4"),
-        .package(url: "https://github.com/candlefinance/swift-async-algorithms.git", branch: "fix-candle-1.0.4"),
-        .package(url: "https://github.com/candlefinance/swift-service-lifecycle.git", branch: "fix-candle-2.8.0"),
-        .package(url: "https://github.com/candlefinance/swift-nio.git", branch: "fix-candle-2.82.1"),
-        .package(url: "https://github.com/candlefinance/swift-nio-ssl.git", branch: "fix-candle-2.33.0"),
-        .package(url: "https://github.com/candlefinance/swift-atomics.git", branch: "fix-candle-1.2.0"),
-        .package(url: "https://github.com/candlefinance/swift-metrics.git", branch: "fix-candle-2.7.1"),
-        .package(url: "https://github.com/candlefinance/swift-w3c-trace-context.git", branch: "fix-candle-1.0.0-beta.3"),
+        .package(url: "https://github.com/candlefinance/swift-distributed-tracing.git", name: "candle-swift-distributed-tracing", branch: "fix-candle-1.2.2"),
+        .package(url: "https://github.com/candlefinance/swift-log.git", name: "candle-swift-log", branch: "fix-candle-1.6.3"),
+        .package(url: "https://github.com/candlefinance/swift-collections.git", name: "candle-swift-collections", branch: "fix-candle-1.1.4"),
+        .package(url: "https://github.com/candlefinance/swift-async-algorithms.git", name: "candle-swift-async-algorithms", branch: "fix-candle-1.0.4"),
+        .package(url: "https://github.com/candlefinance/swift-service-lifecycle.git", name: "candle-swift-service-lifecycle", branch: "fix-candle-2.8.0"),
+        .package(url: "https://github.com/candlefinance/swift-nio.git", name: "candle-swift-nio", branch: "fix-candle-2.82.1"),
+        .package(url: "https://github.com/candlefinance/swift-nio-ssl.git", name: "candle-swift-nio-ssl", branch: "fix-candle-2.33.0"),
+        .package(url: "https://github.com/candlefinance/swift-atomics.git", name: "candle-swift-atomics", branch: "fix-candle-1.2.0"),
+        .package(url: "https://github.com/candlefinance/swift-metrics.git", name: "candle-swift-metrics", branch: "fix-candle-2.7.1"),
+        .package(url: "https://github.com/candlefinance/swift-w3c-trace-context.git", name: "candle-swift-w3c-trace-context", branch: "fix-candle-1.0.0-beta.3"),
 
         // MARK: - OTLPCore
 
-        .package(url: "https://github.com/candlefinance/swift-protobuf.git", branch: "fix-candle-1.30.0"),
+        .package(url: "https://github.com/candlefinance/swift-protobuf.git", name: "candle-swift-protobuf", branch: "fix-candle-1.30.0"),
 
         // MARK: - OTLPGRPC
 
@@ -42,7 +42,7 @@ let package = Package(
 
         // MARK: - OTLPHTTP
 
-        .package(url: "https://github.com/candlefinance/async-http-client.git", branch: "fix-candle-1.27.0"),
+        .package(url: "https://github.com/candlefinance/async-http-client.git", name: "candle-async-http-client", branch: "fix-candle-1.27.0"),
 
         // MARK: - Plugins
 
@@ -53,27 +53,27 @@ let package = Package(
             name: "OTel",
             dependencies: [
                 // API
-                .product(name: "CandleLogging", package: "swift-log"),
-                .product(name: "CandleMetrics", package: "swift-metrics"),
-                .product(name: "CandleTracing", package: "swift-distributed-tracing"),
-                .product(name: "CandleServiceLifecycle", package: "swift-service-lifecycle"),
+                .product(name: "CandleLogging", package: "candle-swift-log"),
+                .product(name: "CandleMetrics", package: "candle-swift-metrics"),
+                .product(name: "CandleTracing", package: "candle-swift-distributed-tracing"),
+                .product(name: "CandleServiceLifecycle", package: "candle-swift-service-lifecycle"),
                 // Core
-                .product(name: "CandleAsyncAlgorithms", package: "swift-async-algorithms"),
-                .product(name: "CandleDequeModule", package: "swift-collections"),
-                .product(name: "CandleNIOConcurrencyHelpers", package: "swift-nio"),
-                .product(name: "CandleAtomics", package: "swift-atomics"),
-                .product(name: "CandleW3CTraceContext", package: "swift-w3c-trace-context"),
+                .product(name: "CandleAsyncAlgorithms", package: "candle-swift-async-algorithms"),
+                .product(name: "CandleDequeModule", package: "candle-swift-collections"),
+                .product(name: "CandleNIOConcurrencyHelpers", package: "candle-swift-nio"),
+                .product(name: "CandleAtomics", package: "candle-swift-atomics"),
+                .product(name: "CandleW3CTraceContext", package: "candle-swift-w3c-trace-context"),
                 /// NOTE: Using `.when(traits: ["A", "B"])` is supposed to work as an OR, but is currently broken.
                 ///       so we "splat" it into two conditional dependencies. This produces a build warning about a
                 ///       duplicate dependency when both traits are enabled (which is the default, too), but it's the
                 ///       best we can do until the SwiftPM issue is addressed.
                 // Depend on this if either trait is enabled.
-                // .product(name: "SwiftProtobuf", package: "swift-protobuf", condition: .when(traits: ["OTLPHTTP", "OTLPGRPC"])),
-                .product(name: "SwiftProtobuf", package: "swift-protobuf", condition: .when(traits: ["OTLPHTTP"])),
-                .product(name: "SwiftProtobuf", package: "swift-protobuf", condition: .when(traits: ["OTLPGRPC"])),
+                // .product(name: "SwiftProtobuf", package: "candle-swift-protobuf", condition: .when(traits: ["OTLPHTTP", "OTLPGRPC"])),
+                .product(name: "SwiftProtobuf", package: "candle-swift-protobuf", condition: .when(traits: ["OTLPHTTP"])),
+                .product(name: "SwiftProtobuf", package: "candle-swift-protobuf", condition: .when(traits: ["OTLPGRPC"])),
                 // OTLP/HTTP exporter -- only when OTLPHTTP trait is enabled.
-                .product(name: "CandleAsyncHTTPClient", package: "async-http-client", condition: .when(traits: ["OTLPHTTP"])),
-                .product(name: "CandleNIOSSL", package: "swift-nio-ssl", condition: .when(traits: ["OTLPHTTP"])),
+                .product(name: "CandleAsyncHTTPClient", package: "candle-async-http-client", condition: .when(traits: ["OTLPHTTP"])),
+                .product(name: "CandleNIOSSL", package: "candle-swift-nio-ssl", condition: .when(traits: ["OTLPHTTP"])),
             ],
             swiftSettings: sharedSwiftSettings
         ),
@@ -82,7 +82,7 @@ let package = Package(
             name: "OTelTests",
             dependencies: [
                 .target(name: "OTel"),
-                .product(name: "NIOTestUtils", package: "swift-nio"),
+                .product(name: "NIOTestUtils", package: "candle-swift-nio"),
             ],
             swiftSettings: sharedSwiftSettings
         ),

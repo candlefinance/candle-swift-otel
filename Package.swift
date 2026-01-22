@@ -8,7 +8,7 @@ let sharedSwiftSettings: [SwiftSetting] = [
 ]
 
 let package = Package(
-    name: "swift-otel",
+    name: "candle-swift-otel",
     platforms: PlatformRequirements.clockAPI.supportedPlatforms,
     products: [
         .library(name: "OTel", targets: ["OTel"]),

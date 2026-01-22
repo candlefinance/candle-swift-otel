@@ -19,20 +19,20 @@ let package = Package(
         .default(enabledTraits: ["OTLPHTTP", "OTLPGRPC"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/candlefinance/swift-distributed-tracing.git", name: "candle-swift-distributed-tracing", branch: "fix-candle-1.2.2"),
-        .package(url: "https://github.com/candlefinance/swift-log.git", name: "candle-swift-log", branch: "fix-candle-1.6.3"),
-        .package(url: "https://github.com/candlefinance/swift-collections.git", name: "candle-swift-collections", branch: "fix-candle-1.1.4"),
-        .package(url: "https://github.com/candlefinance/swift-async-algorithms.git", name: "candle-swift-async-algorithms", branch: "fix-candle-1.0.4"),
-        .package(url: "https://github.com/candlefinance/swift-service-lifecycle.git", name: "candle-swift-service-lifecycle", branch: "fix-candle-2.8.0"),
-        .package(url: "https://github.com/candlefinance/swift-nio.git", name: "candle-swift-nio", branch: "fix-candle-2.82.1"),
-        .package(url: "https://github.com/candlefinance/swift-nio-ssl.git", name: "candle-swift-nio-ssl", branch: "fix-candle-2.33.0"),
-        .package(url: "https://github.com/candlefinance/swift-atomics.git", name: "candle-swift-atomics", branch: "fix-candle-1.2.0"),
-        .package(url: "https://github.com/candlefinance/swift-metrics.git", name: "candle-swift-metrics", branch: "fix-candle-2.7.1"),
-        .package(url: "https://github.com/candlefinance/swift-w3c-trace-context.git", name: "candle-swift-w3c-trace-context", branch: "fix-candle-1.0.0-beta.3"),
+        .package(name: "candle-swift-distributed-tracing", url: "https://github.com/candlefinance/swift-distributed-tracing.git", branch: "fix-candle-1.2.2"),
+        .package(name: "candle-swift-log", url: "https://github.com/candlefinance/swift-log.git", branch: "fix-candle-1.6.3"),
+        .package(name: "candle-swift-collections", url: "https://github.com/candlefinance/swift-collections.git", branch: "fix-candle-1.1.4"),
+        .package(name: "candle-swift-async-algorithms", url: "https://github.com/candlefinance/swift-async-algorithms.git", branch: "fix-candle-1.0.4"),
+        .package(name: "candle-swift-service-lifecycle", url: "https://github.com/candlefinance/swift-service-lifecycle.git", branch: "fix-candle-2.8.0"),
+        .package(name: "candle-swift-nio", url: "https://github.com/candlefinance/swift-nio.git", branch: "fix-candle-2.82.1"),
+        .package(name: "candle-swift-nio-ssl", url: "https://github.com/candlefinance/swift-nio-ssl.git", branch: "fix-candle-2.33.0"),
+        .package(name: "candle-swift-atomics", url: "https://github.com/candlefinance/swift-atomics.git", branch: "fix-candle-1.2.0"),
+        .package(name: "candle-swift-metrics", url: "https://github.com/candlefinance/swift-metrics.git", branch: "fix-candle-2.7.1"),
+        .package(name: "candle-swift-w3c-trace-context", url: "https://github.com/candlefinance/swift-w3c-trace-context.git", branch: "fix-candle-1.0.0-beta.3"),
 
         // MARK: - OTLPCore
 
-        .package(url: "https://github.com/candlefinance/swift-protobuf.git", name: "candle-swift-protobuf", branch: "fix-candle-1.30.0"),
+        .package(name: "candle-swift-protobuf", url: "https://github.com/candlefinance/swift-protobuf.git", branch: "fix-candle-1.30.0"),
 
         // MARK: - OTLPGRPC
 
@@ -42,7 +42,7 @@ let package = Package(
 
         // MARK: - OTLPHTTP
 
-        .package(url: "https://github.com/candlefinance/async-http-client.git", name: "candle-async-http-client", branch: "fix-candle-1.27.0"),
+        .package(name: "candle-async-http-client", url: "https://github.com/candlefinance/async-http-client.git", branch: "fix-candle-1.27.0"),
 
         // MARK: - Plugins
 

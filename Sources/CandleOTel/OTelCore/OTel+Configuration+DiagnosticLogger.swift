@@ -18,7 +18,7 @@ import class Foundation.ProcessInfo
 #endif
 import CandleLogging
 
-extension OTel.Configuration {
+extension CandleOTel.Configuration {
     func makeDiagnosticLogger() -> Logger {
         var logger = switch self.diagnosticLogger.backing {
         case .console:

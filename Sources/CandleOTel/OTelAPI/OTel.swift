@@ -11,8 +11,4 @@
 //
 //===----------------------------------------------------------------------===//
 
-extension OTel.Configuration {
-    enum Error: Swift.Error, Equatable {
-        case invalidConfiguration(String)
-    }
-}
+public enum CandleOTel {}

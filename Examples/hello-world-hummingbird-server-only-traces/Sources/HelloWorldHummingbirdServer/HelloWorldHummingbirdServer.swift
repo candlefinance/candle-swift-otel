@@ -12,19 +12,19 @@
 //===----------------------------------------------------------------------===//
 
 import Hummingbird
-import OTel
+import CandleOTel
 
 @main
 enum HelloWorldHummingbirdServer {
     static func main() async throws {
         // Bootstrap only the tracing backend (logs and metrics OTLP backends disabled).
-        var config = OTel.Configuration.default
+        var config = CandleOTel.Configuration.default
         config.serviceName = "hello_world"
         config.diagnosticLogLevel = .error
         config.logs.enabled = false
         config.metrics.enabled = false
         config.traces.batchSpanProcessor.scheduleDelay = .seconds(3)
-        let observability = try OTel.bootstrap(configuration: config)
+        let observability = try CandleOTel.bootstrap(configuration: config)
 
         // Create an HTTP server with instrumentation middlewares added.
         let router = Router()

@@ -12,7 +12,7 @@
 //===----------------------------------------------------------------------===//
 
 import Benchmark
-@_spi(OTelBenchmarking) import OTel
+@_spi(OTelBenchmarking) import CandleOTel
 import CandleServiceContextModule
 import CandleW3CTraceContext
 

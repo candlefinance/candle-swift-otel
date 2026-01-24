@@ -32,7 +32,7 @@ actor OTelBatchSpanProcessor<Exporter: OTelSpanExporter, Clock: _Concurrency.Clo
 
     private let logger: Logger
     private let exporter: Exporter
-    private let configuration: OTel.Configuration.TracesConfiguration.BatchSpanProcessorConfiguration
+    private let configuration: CandleOTel.Configuration.TracesConfiguration.BatchSpanProcessorConfiguration
     private let clock: Clock
     private let spanStream: AsyncStream<OTelFinishedSpan>
     private let spanContinuation: AsyncStream<OTelFinishedSpan>.Continuation
@@ -40,7 +40,7 @@ actor OTelBatchSpanProcessor<Exporter: OTelSpanExporter, Clock: _Concurrency.Clo
     private let explicitTick: AsyncStream<Void>.Continuation
     private var batchID: UInt = 0
 
-    init(exporter: Exporter, configuration: OTel.Configuration.TracesConfiguration.BatchSpanProcessorConfiguration, logger: Logger, clock: Clock) {
+    init(exporter: Exporter, configuration: CandleOTel.Configuration.TracesConfiguration.BatchSpanProcessorConfiguration, logger: Logger, clock: Clock) {
         self.logger = logger.withMetadata(component: "OTelBatchSpanProcessor")
         self.exporter = exporter
         self.configuration = configuration
@@ -165,7 +165,7 @@ extension OTelBatchSpanProcessor where Clock == ContinuousClock {
     /// - Parameters:
     ///   - exporter: The span exporter to receive batched spans to export.
     ///   - configuration: Further configuration parameters to tweak the batching behavior.
-    init(exporter: Exporter, configuration: OTel.Configuration.TracesConfiguration.BatchSpanProcessorConfiguration, logger: Logger) {
+    init(exporter: Exporter, configuration: CandleOTel.Configuration.TracesConfiguration.BatchSpanProcessorConfiguration, logger: Logger) {
         self.init(exporter: exporter, configuration: configuration, logger: logger, clock: .continuous)
     }
 }

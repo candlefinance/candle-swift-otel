@@ -97,7 +97,7 @@ internal enum WrappedLogRecordExporter: OTelLogRecordExporter {
         }
     }
 
-    init(configuration: OTel.Configuration, logger: Logger) throws {
+    init(configuration: CandleOTel.Configuration, logger: Logger) throws {
         switch configuration.logs.exporter.backing {
         case .otlp:
             switch configuration.logs.otlpExporter.protocol.backing {
@@ -159,7 +159,7 @@ internal enum WrappedMetricExporter: OTelMetricExporter {
         }
     }
 
-    init(configuration: OTel.Configuration, logger: Logger) throws {
+    init(configuration: CandleOTel.Configuration, logger: Logger) throws {
         switch configuration.metrics.exporter.backing {
         case .otlp:
             switch configuration.metrics.otlpExporter.protocol.backing {
@@ -222,7 +222,7 @@ internal enum WrappedSpanExporter: OTelSpanExporter {
         }
     }
 
-    init(configuration: OTel.Configuration, logger: Logger) throws {
+    init(configuration: CandleOTel.Configuration, logger: Logger) throws {
         switch configuration.traces.exporter.backing {
         case .otlp:
             switch configuration.traces.otlpExporter.protocol.backing {
@@ -262,7 +262,7 @@ internal enum WrappedSampler: OTelSampler {
         }
     }
 
-    init(configuration: OTel.Configuration) {
+    init(configuration: CandleOTel.Configuration) {
         switch configuration.traces.sampler.backing {
         case .alwaysOn: self = .alwaysOn(OTelConstantSampler(isOn: true))
         case .alwaysOff: self = .alwaysOff(OTelConstantSampler(isOn: false))
@@ -314,7 +314,7 @@ internal enum WrappedLogRecordProcessor: OTelLogRecordProcessor {
         }
     }
 
-    init(configuration: OTel.Configuration, exporter: WrappedLogRecordExporter, logger: Logger) throws {
+    init(configuration: CandleOTel.Configuration, exporter: WrappedLogRecordExporter, logger: Logger) throws {
         /// Here we choose which processor to use based on the exporter, as described by the spec:
         ///
         /// > If a language provides a mechanism to automatically configure a LogRecordProcessor to pair with the
@@ -337,7 +337,7 @@ internal enum WrappedLogRecordProcessor: OTelLogRecordProcessor {
 }
 
 extension OTelMultiplexPropagator {
-    init(configuration: OTel.Configuration) {
+    init(configuration: CandleOTel.Configuration) {
         var propagators: [OTelPropagator] = []
         loop: for propagatorConfigValue in configuration.propagators {
             switch propagatorConfigValue.backing {

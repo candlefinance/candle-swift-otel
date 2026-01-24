@@ -33,10 +33,10 @@ package import struct CandleNIOCore.TimeAmount
 
 final class OTLPHTTPExporter<Request: Message, Response: Message>: Sendable {
     private let logger: Logger
-    let configuration: OTel.Configuration.OTLPExporterConfiguration
+    let configuration: CandleOTel.Configuration.OTLPExporterConfiguration
     let httpClient: HTTPClient
 
-    init(configuration: OTel.Configuration.OTLPExporterConfiguration, logger: Logger) throws {
+    init(configuration: CandleOTel.Configuration.OTLPExporterConfiguration, logger: Logger) throws {
         self.logger = logger
         self.configuration = configuration
         self.httpClient = try HTTPClient(configuration: configuration)
@@ -140,7 +140,7 @@ enum OTLPHTTPExporterError: Swift.Error {
 }
 
 extension HTTPClient {
-    fileprivate convenience init(configuration: OTel.Configuration.OTLPExporterConfiguration) throws {
+    fileprivate convenience init(configuration: CandleOTel.Configuration.OTLPExporterConfiguration) throws {
         try self.init(
             eventLoopGroup: .singletonMultiThreadedEventLoopGroup,
             configuration: .init(configuration: configuration)
@@ -149,7 +149,7 @@ extension HTTPClient {
 }
 
 extension HTTPClient.Configuration {
-    fileprivate init(configuration: OTel.Configuration.OTLPExporterConfiguration) throws {
+    fileprivate init(configuration: CandleOTel.Configuration.OTLPExporterConfiguration) throws {
         self = .singletonConfiguration
         self.timeout = .init(write: .init(configuration.timeout))
         /// Here we determine the scheme based only on the endpoint, and ignore the `insecure` option.

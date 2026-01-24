@@ -13,7 +13,7 @@
 
 public import CandleLogging
 
-extension OTel {
+extension CandleOTel {
     /// Create a logging metadata provider, which includes metadata about the current span.
     ///
     /// - Parameter configuration: Configuration for the logging metadata provider.
@@ -25,7 +25,7 @@ extension OTel {
     ///
     /// - Note: When using the OTLP logging backend, this metadata is already included in the log record.
     public static func makeLoggingMetadataProvider(
-        configuration: OTel.Configuration.LoggingMetadataProviderConfiguration = .default
+        configuration: CandleOTel.Configuration.LoggingMetadataProviderConfiguration = .default
     ) -> Logger.MetadataProvider {
         .otel(
             traceIDKey: configuration.traceIDKey,

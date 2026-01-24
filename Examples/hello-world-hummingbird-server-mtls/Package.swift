@@ -15,7 +15,7 @@ let package = Package(
             name: "HelloWorldHummingbirdServer",
             dependencies: [
                 .product(name: "Hummingbird", package: "hummingbird"),
-                .product(name: "OTel", package: "swift-otel"),
+                .product(name: "CandleOTel", package: "swift-otel"),
             ]
         ),
     ]

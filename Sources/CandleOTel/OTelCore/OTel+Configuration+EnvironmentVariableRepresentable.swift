@@ -24,7 +24,7 @@ extension OTelEnvironmentVariableRepresentable {
 }
 
 extension OTelEnvironmentVariableRepresentable {
-    fileprivate mutating func override(using key: OTel.Configuration.Key, from environment: [String: String], logger: Logger? = nil) {
+    fileprivate mutating func override(using key: CandleOTel.Configuration.Key, from environment: [String: String], logger: Logger? = nil) {
         guard let proposedValue = environment.getStringValue(key) else { return }
 
         let result: OTelEnvironmentOverrideResult
@@ -46,11 +46,11 @@ extension OTelEnvironmentVariableRepresentable {
         )
     }
 
-    internal mutating func override(using key: OTel.Configuration.Key.GeneralKey, from environment: [String: String], logger: Logger? = nil) {
+    internal mutating func override(using key: CandleOTel.Configuration.Key.GeneralKey, from environment: [String: String], logger: Logger? = nil) {
         override(using: .single(key), from: environment, logger: logger)
     }
 
-    internal mutating func override(using key: OTel.Configuration.Key.SignalSpecificKey, for signal: OTel.Configuration.Key.Signal, from environment: [String: String], logger: Logger? = nil) {
+    internal mutating func override(using key: CandleOTel.Configuration.Key.SignalSpecificKey, for signal: CandleOTel.Configuration.Key.Signal, from environment: [String: String], logger: Logger? = nil) {
         override(using: .signalSpecific(key, signal), from: environment, logger: logger)
     }
 }
@@ -206,18 +206,18 @@ extension Optional: OTelEnvironmentVariableRepresentable where Wrapped: OTelEnvi
     }
 }
 
-extension OTel.Configuration.Propagator: OTelEnum {}
-extension OTel.Configuration.LogLevel: OTelEnum {}
-extension OTel.Configuration.LogsConfiguration.ExporterSelection: OTelEnum {}
-extension OTel.Configuration.MetricsConfiguration.ExporterSelection: OTelEnum {}
-extension OTel.Configuration.TracesConfiguration.ExporterSelection: OTelEnum {}
-extension OTel.Configuration.OTLPExporterConfiguration.Compression: OTelEnum {}
+extension CandleOTel.Configuration.Propagator: OTelEnum {}
+extension CandleOTel.Configuration.LogLevel: OTelEnum {}
+extension CandleOTel.Configuration.LogsConfiguration.ExporterSelection: OTelEnum {}
+extension CandleOTel.Configuration.MetricsConfiguration.ExporterSelection: OTelEnum {}
+extension CandleOTel.Configuration.TracesConfiguration.ExporterSelection: OTelEnum {}
+extension CandleOTel.Configuration.OTLPExporterConfiguration.Compression: OTelEnum {}
 // swiftformat:disable:next redundantBackticks
-extension OTel.Configuration.OTLPExporterConfiguration.`Protocol`: OTelEnum {}
-extension OTel.Configuration.TracesConfiguration.SamplerConfiguration.Backing: OTelEnvironmentVariableRepresentable {}
+extension CandleOTel.Configuration.OTLPExporterConfiguration.`Protocol`: OTelEnum {}
+extension CandleOTel.Configuration.TracesConfiguration.SamplerConfiguration.Backing: OTelEnvironmentVariableRepresentable {}
 
-extension OTel.Configuration.TracesConfiguration.SamplerConfiguration.ArgumentBacking? {
-    internal mutating func override(for sampler: OTel.Configuration.TracesConfiguration.SamplerConfiguration.Backing, using key: OTel.Configuration.Key.GeneralKey, from environment: [String: String], logger: Logger? = nil) {
+extension CandleOTel.Configuration.TracesConfiguration.SamplerConfiguration.ArgumentBacking? {
+    internal mutating func override(for sampler: CandleOTel.Configuration.TracesConfiguration.SamplerConfiguration.Backing, using key: CandleOTel.Configuration.Key.GeneralKey, from environment: [String: String], logger: Logger? = nil) {
         if let proposedValue = environment.getStringValue(key) {
             let result: OTelEnvironmentOverrideResult
             let previousValue = self
@@ -317,7 +317,7 @@ extension OTelResourceAttributes: OTelEnvironmentVariableRepresentable {
         backing.map { key, value in "\(key)=\(value)" }.joined(separator: ",")
     }
 
-    internal mutating func merge(using key: OTel.Configuration.Key.GeneralKey, from environment: [String: String], logger: Logger? = nil) {
+    internal mutating func merge(using key: CandleOTel.Configuration.Key.GeneralKey, from environment: [String: String], logger: Logger? = nil) {
         guard let proposedValue = environment[key.key] else { return }
         let previousValue = self
         let result: OTelEnvironmentOverrideResult
@@ -340,7 +340,7 @@ extension OTelResourceAttributes: OTelEnvironmentVariableRepresentable {
 }
 
 extension [(String, String)] {
-    internal mutating func override(using key: OTel.Configuration.Key.SignalSpecificKey, for signal: OTel.Configuration.Key.Signal, from environment: [String: String], logger: Logger? = nil) {
+    internal mutating func override(using key: CandleOTel.Configuration.Key.SignalSpecificKey, for signal: CandleOTel.Configuration.Key.Signal, from environment: [String: String], logger: Logger? = nil) {
         var headers = OTelHeaders(backing: self)
         headers.override(using: .otlpExporterHeaders, for: signal, from: environment, logger: logger)
         self = headers.backing
@@ -348,7 +348,7 @@ extension [(String, String)] {
 }
 
 extension [String: String] {
-    internal mutating func merge(using key: OTel.Configuration.Key.GeneralKey, from environment: [String: String], logger: Logger? = nil) {
+    internal mutating func merge(using key: CandleOTel.Configuration.Key.GeneralKey, from environment: [String: String], logger: Logger? = nil) {
         var resourceAttributes = OTelResourceAttributes(backing: self)
         resourceAttributes.merge(using: key, from: environment, logger: logger)
         self = resourceAttributes.backing

@@ -16,16 +16,16 @@
 #else
 import CandleLogging
 
-final class OTLPHTTPSpanExporter: OTelSpanExporter {
-    typealias Request = Opentelemetry_Proto_Collector_Trace_V1_ExportTraceServiceRequest
-    typealias Response = Opentelemetry_Proto_Collector_Trace_V1_ExportTraceServiceResponse
+final class OTLPHTTPLogRecordExporter: OTelLogRecordExporter {
+    typealias Request = Opentelemetry_Proto_Collector_Logs_V1_ExportLogsServiceRequest
+    typealias Response = Opentelemetry_Proto_Collector_Logs_V1_ExportLogsServiceResponse
     let exporter: OTLPHTTPExporter<Request, Response>
     private let logger: Logger
 
-    init(configuration: OTel.Configuration.OTLPExporterConfiguration, logger: Logger) throws {
-        self.logger = logger.withMetadata(component: "OTLPHTTPSpanExporter")
+    init(configuration: CandleOTel.Configuration.OTLPExporterConfiguration, logger: Logger) throws {
+        self.logger = logger.withMetadata(component: "OTLPHTTPLogRecordExporter")
         var configuration = configuration
-        configuration.endpoint = configuration.tracesHTTPEndpoint
+        configuration.endpoint = configuration.logsHTTPEndpoint
         exporter = try OTLPHTTPExporter(configuration: configuration, logger: logger)
     }
 
@@ -33,14 +33,13 @@ final class OTLPHTTPSpanExporter: OTelSpanExporter {
         try await exporter.run()
     }
 
-    func export(_ batch: some Collection<OTelFinishedSpan> & Sendable) async throws {
+    func export(_ batch: some Collection<OTelLogRecord> & Sendable) async throws {
         guard !batch.isEmpty else { return }
         let proto = Request.with { request in
-            request.resourceSpans = [Opentelemetry_Proto_Trace_V1_ResourceSpans(batch)]
+            request.resourceLogs = [Opentelemetry_Proto_Logs_V1_ResourceLogs(batch)]
         }
         let response = try await exporter.send(proto)
         if response.hasPartialSuccess {
-            // https://opentelemetry.io/docs/specs/otlp/#partial-success-1
             /// > If the request is only partially accepted ... the server MUST initialize the `partial_success` field
             /// > ... and it MUST set the respective `rejected_spans`, `rejected_data_points`, `rejected_log_records`
             /// > or `rejected_profiles` field with the number of spans/data points/log records it rejected.
@@ -61,14 +60,14 @@ final class OTLPHTTPSpanExporter: OTelSpanExporter {
             /// Since this is a useless response and ostensibly all is fine (the rejected count is 0 and there's no
             /// message), we'll log that at debug instead of warning.
             let logLevel: Logger.Level
-            if response.partialSuccess.rejectedSpans == 0, response.partialSuccess.errorMessage.isEmpty {
+            if response.partialSuccess.rejectedLogRecords == 0, response.partialSuccess.errorMessage.isEmpty {
                 logLevel = .debug
             } else {
                 logLevel = .warning
             }
             logger.log(level: logLevel, "Partial success", metadata: [
                 "message": "\(response.partialSuccess.errorMessage)",
-                "rejected_spans": "\(response.partialSuccess.rejectedSpans)",
+                "rejected_log_records": "\(response.partialSuccess.rejectedLogRecords)",
             ])
         }
     }

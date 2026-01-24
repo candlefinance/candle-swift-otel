@@ -23,7 +23,7 @@ import CandleTracing
 
 // MARK: - API
 
-extension OTel {
+extension CandleOTel {
     /// Bootstrap observability backends with OTLP exporters.
     ///
     /// - Parameter configuration: Configuration for observability backends.
@@ -135,20 +135,20 @@ extension OTel {
 
 // MARK: - Internal
 
-extension OTel {
-    internal static func bootstrapTraces(resolvedConfiguration: OTel.Configuration, logger: Logger) throws -> some Service {
+extension CandleOTel {
+    internal static func bootstrapTraces(resolvedConfiguration: CandleOTel.Configuration, logger: Logger) throws -> some Service {
         let backend = try makeTracingBackend(resolvedConfiguration: resolvedConfiguration, logger: logger)
         InstrumentationSystem.bootstrap(backend.factory)
         return backend.service
     }
 
-    internal static func bootstrapMetrics(resolvedConfiguration: OTel.Configuration, logger: Logger) throws -> some Service {
+    internal static func bootstrapMetrics(resolvedConfiguration: CandleOTel.Configuration, logger: Logger) throws -> some Service {
         let backend = try makeMetricsBackend(resolvedConfiguration: resolvedConfiguration, logger: logger)
         MetricsSystem.bootstrap(backend.factory)
         return backend.service
     }
 
-    internal static func bootstrapLogs(resolvedConfiguration: OTel.Configuration, logger: Logger) throws -> some Service {
+    internal static func bootstrapLogs(resolvedConfiguration: CandleOTel.Configuration, logger: Logger) throws -> some Service {
         let backend = try makeLoggingBackend(resolvedConfiguration: resolvedConfiguration, logger: logger)
         let exporterName = switch (resolvedConfiguration.logs.exporter.backing, resolvedConfiguration.logs.otlpExporter.protocol.backing) {
         case (.console, _): "console"

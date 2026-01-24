@@ -15,7 +15,7 @@ import Foundation
 @testable import CandleInstrumentation
 @testable import CandleLogging
 import CandleNIO
-import OTel
+import CandleOTel
 import OTLPGRPC
 import CandleServiceLifecycle
 import CandleW3CTraceContext

@@ -11,16 +11,16 @@
 //
 //===----------------------------------------------------------------------===//
 
-extension OTel.Configuration {
+extension CandleOTel.Configuration {
     /// An environment variable key used to lookup OTel configuration overrides.
     internal enum Key {
         internal enum Signal { case traces, metrics, logs }
         /// A key for an option configured using a single key.
         ///
-        case single(OTel.Configuration.Key.GeneralKey)
+        case single(CandleOTel.Configuration.Key.GeneralKey)
 
         /// A key for an option configured with a singal-specific key, and a shared fallback key.
-        case signalSpecific(OTel.Configuration.Key.SignalSpecificKey, Signal)
+        case signalSpecific(CandleOTel.Configuration.Key.SignalSpecificKey, Signal)
 
         struct GeneralKey {
             var key: String
@@ -48,7 +48,7 @@ extension OTel.Configuration {
     }
 }
 
-extension OTel.Configuration.Key.GeneralKey {
+extension CandleOTel.Configuration.Key.GeneralKey {
     static let sdkDisabled = Self(key: "OTEL_SDK_DISABLED")
     static let resourceAttributes = Self(key: "OTEL_RESOURCE_ATTRIBUTES")
     static let serviceName = Self(key: "OTEL_SERVICE_NAME")
@@ -71,7 +71,7 @@ extension OTel.Configuration.Key.GeneralKey {
     static let batchLogRecordProcessorExportBatchSize = Self(key: "OTEL_BLRP_MAX_EXPORT_BATCH_SIZE")
 }
 
-extension OTel.Configuration.Key.SignalSpecificKey {
+extension CandleOTel.Configuration.Key.SignalSpecificKey {
     private static func otlpExporterKey(suffix: String) -> Self {
         Self(
             shared: "OTEL_EXPORTER_OTLP_\(suffix)",
@@ -93,7 +93,7 @@ extension OTel.Configuration.Key.SignalSpecificKey {
 }
 
 extension [String: String] {
-    func getStringValue(_ lookup: OTel.Configuration.Key) -> String? {
+    func getStringValue(_ lookup: CandleOTel.Configuration.Key) -> String? {
         switch lookup {
         case .single(let generalKey):
             getStringValue(generalKey)
@@ -102,11 +102,11 @@ extension [String: String] {
         }
     }
 
-    func getStringValue(_ key: OTel.Configuration.Key.GeneralKey) -> String? {
+    func getStringValue(_ key: CandleOTel.Configuration.Key.GeneralKey) -> String? {
         self[key.key]
     }
 
-    func getStringValue(_ key: OTel.Configuration.Key.SignalSpecificKey, signal: OTel.Configuration.Key.Signal) -> String? {
+    func getStringValue(_ key: CandleOTel.Configuration.Key.SignalSpecificKey, signal: CandleOTel.Configuration.Key.Signal) -> String? {
         switch signal {
         case .traces: self[key.traces] ?? self[key.shared]
         case .metrics: self[key.metrics] ?? self[key.shared]

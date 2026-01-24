@@ -31,7 +31,7 @@ actor OTelBatchLogRecordProcessor<Exporter: OTelLogRecordExporter, Clock: _Concu
     internal /* for testing */ private(set) var droppedCount = 0
 
     private let exporter: Exporter
-    private let configuration: OTel.Configuration.LogsConfiguration.BatchLogRecordProcessorConfiguration
+    private let configuration: CandleOTel.Configuration.LogsConfiguration.BatchLogRecordProcessorConfiguration
     private let clock: Clock
     private let logger: Logger
     private let logStream: AsyncStream<OTelLogRecord>
@@ -40,7 +40,7 @@ actor OTelBatchLogRecordProcessor<Exporter: OTelLogRecordExporter, Clock: _Concu
     private let explicitTick: AsyncStream<Void>.Continuation
     private var batchID: UInt = 0
 
-    init(exporter: Exporter, configuration: OTel.Configuration.LogsConfiguration.BatchLogRecordProcessorConfiguration, logger: Logger, clock: Clock) {
+    init(exporter: Exporter, configuration: CandleOTel.Configuration.LogsConfiguration.BatchLogRecordProcessorConfiguration, logger: Logger, clock: Clock) {
         self.logger = logger.withMetadata(component: "OTelBatchLogRecordProcessor")
         self.exporter = exporter
         self.configuration = configuration
@@ -162,7 +162,7 @@ extension OTelBatchLogRecordProcessor where Clock == ContinuousClock {
     /// - Parameters:
     ///   - exporter: The log exporter to receive batched logs to export.
     ///   - configuration: Further configuration parameters to tweak the batching behavior.
-    init(exporter: Exporter, configuration: OTel.Configuration.LogsConfiguration.BatchLogRecordProcessorConfiguration, logger: Logger) {
+    init(exporter: Exporter, configuration: CandleOTel.Configuration.LogsConfiguration.BatchLogRecordProcessorConfiguration, logger: Logger) {
         self.init(exporter: exporter, configuration: configuration, logger: logger, clock: .continuous)
     }
 }

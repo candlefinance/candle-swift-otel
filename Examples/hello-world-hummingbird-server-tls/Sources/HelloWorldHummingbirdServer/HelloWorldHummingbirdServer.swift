@@ -12,7 +12,7 @@
 //===----------------------------------------------------------------------===//
 
 import Hummingbird
-import OTel
+import CandleOTel
 
 import struct Foundation.URL
 
@@ -20,7 +20,7 @@ import struct Foundation.URL
 enum HelloWorldHummingbirdServer {
     static func main() async throws {
         // Bootstrap observability backends (with short export intervals for demo purposes).
-        var config = OTel.Configuration.default
+        var config = CandleOTel.Configuration.default
         config.serviceName = "hello_world"
         config.diagnosticLogLevel = .error
         config.logs.batchLogRecordProcessor.scheduleDelay = .seconds(3)
@@ -35,7 +35,7 @@ enum HelloWorldHummingbirdServer {
         config.logs.otlpExporter.certificateFilePath = certPath
         config.metrics.otlpExporter.certificateFilePath = certPath
         config.traces.otlpExporter.certificateFilePath = certPath
-        let observability = try OTel.bootstrap(configuration: config)
+        let observability = try CandleOTel.bootstrap(configuration: config)
 
         // Create an HTTP server with instrumentation middlewares added.
         let router = Router()

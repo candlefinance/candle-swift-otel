@@ -50,8 +50,8 @@ $(PROTOC_GEN_GRPC_SWIFT):
 # -----------------------------------------------------------------------------
 PROTO_ROOT = opentelemetry-proto
 
-OTLP_CORE_SWIFT_ROOT = Sources/OTel/OTLPCore/Generated
-OTLP_GRPC_SWIFT_ROOT = Sources/OTel/OTLPCore/Generated
+OTLP_CORE_SWIFT_ROOT = Sources/CandleOTel/OTLPCore/Generated
+OTLP_GRPC_SWIFT_ROOT = Sources/CandleOTel/OTLPCore/Generated
 
 OTLP_CORE_PROTOS += $(PROTO_ROOT)/opentelemetry/proto/common/v1/common.proto
 OTLP_CORE_PROTOS += $(PROTO_ROOT)/opentelemetry/proto/resource/v1/resource.proto

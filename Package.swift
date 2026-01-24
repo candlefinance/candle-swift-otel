@@ -11,7 +11,7 @@ let package = Package(
     name: "swift-otel",
     platforms: PlatformRequirements.clockAPI.supportedPlatforms,
     products: [
-        .library(name: "OTel", targets: ["OTel"]),
+        .library(name: "CandleOTel", targets: ["CandleOTel"]),
     ],
     traits: [
         .trait(name: "OTLPHTTP"),
@@ -50,7 +50,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "OTel",
+            name: "CandleOTel",
             dependencies: [
                 // API
                 .product(name: "CandleLogging",package: "candle-swift-log"),

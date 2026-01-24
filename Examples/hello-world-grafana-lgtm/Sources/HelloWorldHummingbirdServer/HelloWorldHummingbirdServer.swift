@@ -12,13 +12,13 @@
 //===----------------------------------------------------------------------===//
 
 import Hummingbird
-import OTel
+import CandleOTel
 
 @main
 enum HelloWorldHummingbirdServer {
     static func main() async throws {
         // Bootstrap observability backends (with short export intervals for demo purposes).
-        var config = OTel.Configuration.default
+        var config = CandleOTel.Configuration.default
         config.serviceName = "hello_world"
         config.diagnosticLogLevel = .error
         config.logs.batchLogRecordProcessor.scheduleDelay = .seconds(3)
@@ -27,7 +27,7 @@ enum HelloWorldHummingbirdServer {
         config.logs.otlpExporter.protocol = .grpc
         config.metrics.otlpExporter.protocol = .grpc
         config.traces.otlpExporter.protocol = .grpc
-        let observability = try OTel.bootstrap(configuration: config)
+        let observability = try CandleOTel.bootstrap(configuration: config)
 
         // Create an HTTP server with instrumentation middlewares added.
         let router = Router()

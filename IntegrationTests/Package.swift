@@ -11,7 +11,7 @@ let package = Package(
         .testTarget(
             name: "IntegrationTests",
             dependencies: [
-                .product(name: "OTel", package: "swift-otel"),
+                .product(name: "CandleOTel", package: "swift-otel"),
                 .product(name: "OTLPGRPC", package: "swift-otel"),
                 .product(name: "CandleServiceLifecycle", package: "swift-service-lifecycle"),
             ],

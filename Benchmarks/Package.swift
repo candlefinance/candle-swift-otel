@@ -15,7 +15,7 @@ let package = Package(
             name: "OTelTracing",
             dependencies: [
                 .product(name: "Benchmark", package: "package-benchmark"),
-                .product(name: "OTel", package: "swift-otel"),
+                .product(name: "CandleOTel", package: "swift-otel"),
             ],
             path: "Benchmarks/OTelTracing",
             plugins: [

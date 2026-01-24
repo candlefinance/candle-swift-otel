@@ -15,7 +15,7 @@ let package = Package(
             name: "HelloWorldVaporServer",
             dependencies: [
                 .product(name: "Vapor", package: "vapor"),
-                .product(name: "OTel", package: "swift-otel"),
+                .product(name: "CandleOTel", package: "swift-otel"),
             ]
         ),
     ]

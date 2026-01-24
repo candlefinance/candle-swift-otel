@@ -13,7 +13,7 @@
 
 public import CandleLogging
 
-extension OTel {
+extension CandleOTel {
     /// Configuration that controls telemetry collection and export behavior.
     ///
     /// This type provides a centralized place to configure all aspects of the OTLP observability backends,
@@ -145,7 +145,7 @@ extension OTel {
     }
 }
 
-extension OTel.Configuration {
+extension CandleOTel.Configuration {
     /// Logger to use for internal diagnostics.
     public struct DiagnosticLoggerSelection: Sendable {
         enum Backing: Sendable {
@@ -165,7 +165,7 @@ extension OTel.Configuration {
     }
 }
 
-extension OTel.Configuration {
+extension CandleOTel.Configuration {
     /// Minimum severity of logging to enable.
     public struct LogLevel: Sendable {
         enum Backing: String, CaseIterable, Sendable {
@@ -195,7 +195,7 @@ extension OTel.Configuration {
     }
 }
 
-extension OTel.Configuration {
+extension CandleOTel.Configuration {
     /// Context propagator for distributed tracing across service boundaries.
     ///
     /// Propagators handle the injection and extraction of trace context and baggage
@@ -246,7 +246,7 @@ extension OTel.Configuration {
     }
 }
 
-extension OTel.Configuration {
+extension CandleOTel.Configuration {
     /// Configuration for distributed tracing functionality.
     ///
     /// Controls all aspects of trace collection, processing, and export including span processors,
@@ -409,7 +409,7 @@ extension OTel.Configuration {
     }
 }
 
-extension OTel.Configuration.TracesConfiguration {
+extension CandleOTel.Configuration.TracesConfiguration {
     /// Selection of traces sampler.
     public struct SamplerConfiguration: Sendable {
         enum Backing: String, CaseIterable, Sendable {
@@ -477,7 +477,7 @@ extension OTel.Configuration.TracesConfiguration {
     }
 }
 
-extension OTel.Configuration.TracesConfiguration {
+extension CandleOTel.Configuration.TracesConfiguration {
     /// Configuration for the batch span processor.
     ///
     /// The batch processor collects spans in memory and exports them in batches to improve
@@ -523,7 +523,7 @@ extension OTel.Configuration.TracesConfiguration {
     }
 }
 
-extension OTel.Configuration.TracesConfiguration {
+extension CandleOTel.Configuration.TracesConfiguration {
     /// Selection of trace exporter implementation.
     ///
     /// Determines how completed spans are exported from the application to observability backends.
@@ -558,7 +558,7 @@ extension OTel.Configuration.TracesConfiguration {
     }
 }
 
-extension OTel.Configuration.MetricsConfiguration {
+extension CandleOTel.Configuration.MetricsConfiguration {
     /// Selection of metrics exporter implementation.
     ///
     /// Determines how collected metrics are exported from the application to observability backends.
@@ -588,7 +588,7 @@ extension OTel.Configuration.MetricsConfiguration {
     }
 }
 
-extension OTel.Configuration.LogsConfiguration {
+extension CandleOTel.Configuration.LogsConfiguration {
     /// Selection of logs exporter implementation.
     ///
     /// Determines how log records are exported from the application to observability backends.
@@ -612,7 +612,7 @@ extension OTel.Configuration.LogsConfiguration {
     }
 }
 
-extension OTel.Configuration.LogsConfiguration {
+extension CandleOTel.Configuration.LogsConfiguration {
     /// Configuration for the batch log record processor.
     ///
     /// The batch processor collects log records in memory and exports them in batches to improve
@@ -658,7 +658,7 @@ extension OTel.Configuration.LogsConfiguration {
     }
 }
 
-extension OTel.Configuration {
+extension CandleOTel.Configuration {
     /// Configuration for OTLP (OpenTelemetry Protocol) exporters.
     ///
     /// Controls connection details, security settings, and transport options for exporting
@@ -880,7 +880,7 @@ extension OTel.Configuration {
     }
 }
 
-extension OTel.Configuration.OTLPExporterConfiguration {
+extension CandleOTel.Configuration.OTLPExporterConfiguration {
     /// Compression algorithm for OTLP export payloads.
     ///
     /// Controls whether and how telemetry data is compressed before transmission to reduce
@@ -935,7 +935,7 @@ extension OTel.Configuration.OTLPExporterConfiguration {
     }
 }
 
-extension OTel.Configuration {
+extension CandleOTel.Configuration {
     /// Configuration for the batch logging metadata provider.
     /// - TODO: should this be a property of the Configuratino struct?
     public struct LoggingMetadataProviderConfiguration: Sendable {

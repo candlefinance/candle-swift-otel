@@ -16,16 +16,16 @@
 #else
 import CandleLogging
 
-final class OTLPHTTPLogRecordExporter: OTelLogRecordExporter {
-    typealias Request = Opentelemetry_Proto_Collector_Logs_V1_ExportLogsServiceRequest
-    typealias Response = Opentelemetry_Proto_Collector_Logs_V1_ExportLogsServiceResponse
+final class OTLPHTTPMetricExporter: OTelMetricExporter {
+    typealias Request = Opentelemetry_Proto_Collector_Metrics_V1_ExportMetricsServiceRequest
+    typealias Response = Opentelemetry_Proto_Collector_Metrics_V1_ExportMetricsServiceResponse
     let exporter: OTLPHTTPExporter<Request, Response>
     private let logger: Logger
 
-    init(configuration: OTel.Configuration.OTLPExporterConfiguration, logger: Logger) throws {
-        self.logger = logger.withMetadata(component: "OTLPHTTPLogRecordExporter")
+    init(configuration: CandleOTel.Configuration.OTLPExporterConfiguration, logger: Logger) throws {
+        self.logger = logger.withMetadata(component: "OTLPHTTPMetricExporter")
         var configuration = configuration
-        configuration.endpoint = configuration.logsHTTPEndpoint
+        configuration.endpoint = configuration.metricsHTTPEndpoint
         exporter = try OTLPHTTPExporter(configuration: configuration, logger: logger)
     }
 
@@ -33,10 +33,10 @@ final class OTLPHTTPLogRecordExporter: OTelLogRecordExporter {
         try await exporter.run()
     }
 
-    func export(_ batch: some Collection<OTelLogRecord> & Sendable) async throws {
-        guard !batch.isEmpty else { return }
+    func export(_ batch: some Collection<OTelResourceMetrics> & Sendable) async throws {
+        guard batch.contains(where: { $0.scopeMetrics.contains(where: { !$0.metrics.isEmpty }) }) else { return }
         let proto = Request.with { request in
-            request.resourceLogs = [Opentelemetry_Proto_Logs_V1_ResourceLogs(batch)]
+            request.resourceMetrics = batch.map(Opentelemetry_Proto_Metrics_V1_ResourceMetrics.init)
         }
         let response = try await exporter.send(proto)
         if response.hasPartialSuccess {
@@ -60,14 +60,14 @@ final class OTLPHTTPLogRecordExporter: OTelLogRecordExporter {
             /// Since this is a useless response and ostensibly all is fine (the rejected count is 0 and there's no
             /// message), we'll log that at debug instead of warning.
             let logLevel: Logger.Level
-            if response.partialSuccess.rejectedLogRecords == 0, response.partialSuccess.errorMessage.isEmpty {
+            if response.partialSuccess.rejectedDataPoints == 0, response.partialSuccess.errorMessage.isEmpty {
                 logLevel = .debug
             } else {
                 logLevel = .warning
             }
             logger.log(level: logLevel, "Partial success", metadata: [
                 "message": "\(response.partialSuccess.errorMessage)",
-                "rejected_log_records": "\(response.partialSuccess.rejectedLogRecords)",
+                "rejected_data_points": "\(response.partialSuccess.rejectedDataPoints)",
             ])
         }
     }

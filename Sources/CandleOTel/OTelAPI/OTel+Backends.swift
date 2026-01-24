@@ -21,7 +21,7 @@ public import CandleLogging
 public import CandleServiceLifecycle
 public import CandleTracing
 
-extension OTel {
+extension CandleOTel {
     /// Create a logging backend with an OTLP exporter.
     ///
     /// - Parameter configuration: Configuration for the logging backend.
@@ -107,16 +107,16 @@ extension OTel {
     ///   - `OTel.makeMetricsBackend(configuration:)` for metrics backend creation
     ///   - `OTel.makeTracingBackend(configuration:)` for tracing backend creation
     ///   - `OTel.Configuration` for configuration options and environment variables
-    public static func makeLoggingBackend(configuration: OTel.Configuration = .default) throws -> (factory: @Sendable (String) -> any LogHandler, service: some Service) {
+    public static func makeLoggingBackend(configuration: CandleOTel.Configuration = .default) throws -> (factory: @Sendable (String) -> any LogHandler, service: some Service) {
         let logger = configuration.makeDiagnosticLogger().withMetadata(component: "makeLoggingBackend")
         var configuration = configuration
         configuration.applyEnvironmentOverrides(environment: ProcessInfo.processInfo.environment, logger: logger)
         return try makeLoggingBackend(resolvedConfiguration: configuration, logger: logger)
     }
 
-    internal static func makeLoggingBackend(resolvedConfiguration: OTel.Configuration, logger: Logger) throws -> (factory: @Sendable (String) -> any LogHandler, service: some Service) {
+    internal static func makeLoggingBackend(resolvedConfiguration: CandleOTel.Configuration, logger: Logger) throws -> (factory: @Sendable (String) -> any LogHandler, service: some Service) {
         guard resolvedConfiguration.logs.enabled else {
-            throw OTel.Configuration.Error.invalidConfiguration("makeLoggingBackend called but config has logs disabled")
+            throw CandleOTel.Configuration.Error.invalidConfiguration("makeLoggingBackend called but config has logs disabled")
         }
         let resource = OTelResource(configuration: resolvedConfiguration)
         let exporter = try WrappedLogRecordExporter(configuration: resolvedConfiguration, logger: logger)
@@ -225,16 +225,16 @@ extension OTel {
     ///   - `OTel.makeLoggingBackend(configuration:)` for logging backend creation
     ///   - `OTel.makeTracingBackend(configuration:)` for tracing backend creation
     ///   - `OTel.Configuration` for configuration options and environment variables
-    public static func makeMetricsBackend(configuration: OTel.Configuration = .default) throws -> (factory: some MetricsFactory, service: some Service) {
+    public static func makeMetricsBackend(configuration: CandleOTel.Configuration = .default) throws -> (factory: some MetricsFactory, service: some Service) {
         let logger = configuration.makeDiagnosticLogger().withMetadata(component: "makeMetricsBackend")
         var configuration = configuration
         configuration.applyEnvironmentOverrides(environment: ProcessInfo.processInfo.environment, logger: logger)
         return try makeMetricsBackend(resolvedConfiguration: configuration, logger: logger)
     }
 
-    internal static func makeMetricsBackend(resolvedConfiguration: OTel.Configuration, logger: Logger) throws -> (factory: some MetricsFactory, service: some Service) {
+    internal static func makeMetricsBackend(resolvedConfiguration: CandleOTel.Configuration, logger: Logger) throws -> (factory: some MetricsFactory, service: some Service) {
         guard resolvedConfiguration.metrics.enabled else {
-            throw OTel.Configuration.Error.invalidConfiguration("makeMetricsBackend called but config has metrics disabled")
+            throw CandleOTel.Configuration.Error.invalidConfiguration("makeMetricsBackend called but config has metrics disabled")
         }
         let resource = OTelResource(configuration: resolvedConfiguration)
         let registry = OTelMetricRegistry(logger: logger)
@@ -341,16 +341,16 @@ extension OTel {
     ///   - `OTel.makeLoggingBackend(configuration:)` for logging backend creation
     ///   - `OTel.makeMetricsBackend(configuration:)` for metrics backend creation
     ///   - `OTel.Configuration` for configuration options and environment variables
-    public static func makeTracingBackend(configuration: OTel.Configuration = .default) throws -> (factory: some Tracer, service: some Service) {
+    public static func makeTracingBackend(configuration: CandleOTel.Configuration = .default) throws -> (factory: some Tracer, service: some Service) {
         let logger = configuration.makeDiagnosticLogger().withMetadata(component: "makeTracingBackend")
         var configuration = configuration
         configuration.applyEnvironmentOverrides(environment: ProcessInfo.processInfo.environment, logger: logger)
         return try makeTracingBackend(resolvedConfiguration: configuration, logger: logger)
     }
 
-    internal static func makeTracingBackend(resolvedConfiguration: OTel.Configuration, logger: Logger) throws -> (factory: some Tracer, service: some Service) {
+    internal static func makeTracingBackend(resolvedConfiguration: CandleOTel.Configuration, logger: Logger) throws -> (factory: some Tracer, service: some Service) {
         guard resolvedConfiguration.traces.enabled else {
-            throw OTel.Configuration.Error.invalidConfiguration("makeTracingBackend called but config has traces disabled")
+            throw CandleOTel.Configuration.Error.invalidConfiguration("makeTracingBackend called but config has traces disabled")
         }
         let resource = OTelResource(configuration: resolvedConfiguration)
         let sampler = WrappedSampler(configuration: resolvedConfiguration)

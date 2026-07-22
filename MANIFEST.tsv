@@ -1,0 +1,7 @@
+kind	ref	oid	date	description
+LOCAL_BRANCH\tfix-candle-1.0.0-alpha.2\t7ae4f3ce278c66ad7db6227ceacecf95f2e36075\t\tlocal branch tip
+LOCAL_BRANCH\tfix-candle-1.0.0-alpha.2-local-backup-20260720\t7ae4f3ce278c66ad7db6227ceacecf95f2e36075\t\tlocal branch tip
+LOCAL_BRANCH\tfix-candle-1.0.0-alpha.5\teac1afb311afa591d00d28475c5a1cab25313623\t\tlocal branch tip
+LOCAL_BRANCH\tfix-candle-1.0.0-alpha.6\t31bb81bc7fb1a5129418c4a3e544c6ffd1f219e7\t\tlocal branch tip
+LOCAL_BRANCH\tmain\te350d4c38e861f40fbc2888f34dcaaba55414b61\t\tlocal branch tip
+STASH\tstash@{0}\t7976af7f3b20cd928e5e4a7a04fb3d19a51e2231\t2026-01-20 19:28:46 +0800\tOn (no branch): debugging
